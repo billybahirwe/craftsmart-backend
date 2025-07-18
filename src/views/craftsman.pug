@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title Craftsman Dashboard
+    link(rel='stylesheet', href='/css/craftsman.css')
+  body
+    .form-container
+      h2 Update Profile
+      form#profileForm(action='/api/craftsmen/dashboard', method='POST')
+        .form-group
+          label(for='name') Name
+          input#name(type='text', name='name', required)
+        .form-group
+          label(for='phone') Phone
+          input#phone(type='tel', name='phone', required)
+        .form-group
+          label(for='location') Location
+          input#location(type='text', name='location', required)
+        .form-group
+          label(for='bio') Bio
+          textarea#bio(name='bio', required)
+        .form-group
+          label(for='skills') Skills
+          select#skills(name='skills[]', multiple)
+            option(value='electrician') Electrician
+            option(value='plumber') Plumber
+            option(value='carpenter') Carpenter
+            option(value='painter') Painter
+        button(type='submit') Save Profile
+    script(src='/craftsman.js')

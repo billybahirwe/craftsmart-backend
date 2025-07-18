@@ -1,0 +1,21 @@
+doctype html
+head
+  title Admin Panel
+  link(rel='stylesheet', href='/css/admin.css')
+body
+h2 Manage Users
+form#userForm
+  label User Types
+  select#userType
+    option(value='employer') Employer
+    option(value='craftsman') Craftsman
+  label Action
+  select#action
+    option(value='create') Create
+    option(value='deactivate') Deactivate
+  label User ID (for update)
+  input#userId(type='text')
+  label Details
+  textarea#details
+  button(type='submit') Submit
+script(src='admin.js')

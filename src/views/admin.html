@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin Panel</title></head>
+<body>
+  <h2>Manage Users</h2>
+  <form id="userForm">
+    <label>User Type</label>
+    <select id="userType">
+      <option value="employer">Employer</option>
+      <option value="craftsman">Craftsman</option>
+    </select>
+
+    <label>Action</label>
+    <select id="action">
+      <option value="create">Create</option>
+      <option value="deactivate">Deactivate</option>
+    </select>
+
+    <label>User ID (for update)</label>
+    <input type="text" id="userId">
+
+    <label>Details</label>
+    <textarea id="details"></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src="admin.js"></script>
+</body>
+</html>

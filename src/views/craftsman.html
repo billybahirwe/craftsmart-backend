@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head><title>Craftsman Dashboard</title></head>
+<body>
+  <h2>Update Profile</h2>
+  <form id="profileForm">
+    <label>Name</label>
+    <input type="text" id="name" required>
+
+    <label>Phone</label>
+    <input type="tel" id="phone" required>
+
+    <label>Location</label>
+    <input type="text" id="location" required>
+
+    <label>Bio</label>
+    <textarea id="bio" required></textarea>
+
+    <label>Skills</label>
+    <select id="skills" multiple>
+      <option value="electrician">Electrician</option>
+      <option value="plumber">Plumber</option>
+    </select>
+
+    <button type="submit">Save Profile</button>
+  </form>
+
+  <script src="craftsman.js"></script>
+</body>
+</html>
