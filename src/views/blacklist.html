@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Black List - CraftSmart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <style>
+    .toggle-switch {
+      transition: background-color 0.3s;
+    }
+    .toggle-switch .dot {
+      transition: transform 0.3s;
+    }
+    .toggle-switch input:checked ~ .bg {
+      background-color: #4f46e5; /* indigo-600 */
+    }
+    .toggle-switch input:checked ~ .bg .dot {
+      transform: translateX(20px);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <div class="min-h-screen flex">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white dark:bg-gray-800 p-4 border-r border-gray-200 dark:border-gray-700 shadow-sm overflow-y-auto">
+      <div class="text-2xl font-bold text-blue-600 mb-6">CraftSmart</div>
+      <nav class="space-y-2 text-sm">
+        <a href="dashboard.html" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="home" class="w-4 h-4 mr-2"></i> Home</a>
+        <a href="job-monitor.html" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="eye" class="w-4 h-4 mr-2"></i> Job Monitor</a>
+        <a href="projects.html" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="folder" class="w-4 h-4 mr-2"></i> Projects</a>
+        <a href="messages.html" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="message-circle" class="w-4 h-4 mr-2"></i> Message</a>
+        <a href="reports.html" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="file-text" class="w-4 h-4 mr-2"></i> Reports</a>
+        <a href="blacklist.html" class="flex items-center px-3 py-2 rounded bg-blue-100 dark:bg-gray-700 font-semibold text-blue-600 dark:text-white"><i data-feather="user-x" class="w-4 h-4 mr-2"></i> Black List</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="bar-chart-2" class="w-4 h-4 mr-2"></i> Analytics</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="settings" class="w-4 h-4 mr-2"></i> Settings</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Help center</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="mail" class="w-4 h-4 mr-2"></i> Contact us</a>
+        <a href="#" class="flex items-center px-3 py-2 text-red-600 rounded hover:bg-red-100 dark:hover:bg-gray-700"><i data-feather="log-out" class="w-4 h-4 mr-2"></i> Log Out</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 space-y-6">
+
+      <!-- Top Bar -->
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex justify-between items-center">
+        <div class="flex-1 flex justify-center">
+          <input type="text" placeholder="Search..." class="w-full max-w-md px-4 py-2 border rounded shadow-sm bg-gray-50 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring focus:border-blue-300" />
+        </div>
+        <div class="flex items-center space-x-4">
+          <!-- Dark mode switch -->
+          <label class="toggle-switch relative flex items-center cursor-pointer">
+            <input type="checkbox" id="darkToggle" class="sr-only" onchange="toggleDarkMode(this)">
+            <div class="bg w-11 h-6 bg-gray-300 rounded-full relative">
+              <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full"></div>
+            </div>
+          </label>
+          <!-- Notification icon -->
+          <i data-feather="bell" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i>
+          <!-- Profile avatar -->
+          <div class="w-8 h-8 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- Header Buttons -->
+      <div class="flex justify-between items-center">
+        <h2 class="text-xl font-semibold">Black List</h2>
+        <div class="space-x-2">
+          <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">Add to Black List</button>
+          <button class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded">Export to PDF</button>
+        </div>
+      </div>
+
+      <!-- Black List Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border border-gray-200 dark:border-gray-700">
+          <thead class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
+            <tr>
+              <th class="px-4 py-2">#</th>
+              <th class="px-4 py-2">Name</th>
+              <th class="px-4 py-2">Email</th>
+              <th class="px-4 py-2">Phone</th>
+              <th class="px-4 py-2">Reason</th>
+              <th class="px-4 py-2">Action</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white dark:bg-gray-800">
+            <tr class="border-t border-gray-200 dark:border-gray-700">
+              <td class="px-4 py-2">1</td>
+              <td class="px-4 py-2">Karin</td>
+              <td class="px-4 py-2">karin@gmail.com</td>
+              <td class="px-4 py-2">0762247887</td>
+              <td class="px-4 py-2">Fraud</td>
+              <td class="px-4 py-2 text-blue-600 hover:underline cursor-pointer">View / Edit</td>
+            </tr>
+            <tr class="border-t border-gray-200 dark:border-gray-700">
+              <td class="px-4 py-2">2</td>
+              <td class="px-4 py-2">Shabrina</td>
+              <td class="px-4 py-2">shabrina@gmail.com</td>
+              <td class="px-4 py-2">0763324564</td>
+              <td class="px-4 py-2">Spam</td>
+              <td class="px-4 py-2 text-blue-600 hover:underline cursor-pointer">View / Edit</td>
+            </tr>
+            <tr class="border-t border-gray-200 dark:border-gray-700">
+              <td class="px-4 py-2">3</td>
+              <td class="px-4 py-2">Karin</td>
+              <td class="px-4 py-2">karin@gmail.com</td>
+              <td class="px-4 py-2">072345637493</td>
+              <td class="px-4 py-2">Scam</td>
+              <td class="px-4 py-2 text-blue-600 hover:underline cursor-pointer">View / Edit</td>
+            </tr>
+            <tr class="border-t border-gray-200 dark:border-gray-700">
+              <td class="px-4 py-2">4</td>
+              <td class="px-4 py-2">Joel</td>
+              <td class="px-4 py-2">joel@gmail.com</td>
+              <td class="px-4 py-2">0752354845</td>
+              <td class="px-4 py-2">Unfinished Work</td>
+              <td class="px-4 py-2 text-blue-600 hover:underline cursor-pointer">View / Edit</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400 mt-4">
+        <div>Go To</div>
+        <div>15</div>
+        <div>20 / pages</div>
+        <div>Total: 4</div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    feather.replace();
+
+    // Toggle dark mode with switch
+    function toggleDarkMode(checkbox) {
+      document.documentElement.classList.toggle('dark', checkbox.checked);
+    }
+
+    // Set switch state on load if dark mode is on
+    window.addEventListener('DOMContentLoaded', () => {
+      const checkbox = document.getElementById('darkToggle');
+      if (document.documentElement.classList.contains('dark')) {
+        checkbox.checked = true;
+      }
+    });
+  </script>
+</body>
+</html>

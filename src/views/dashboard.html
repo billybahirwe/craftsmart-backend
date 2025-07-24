@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CraftSmart Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    .toggle-switch .dot {
+      transition: transform 0.3s ease;
+    }
+    .toggle-switch input:checked ~ .track {
+      background-color: #4f46e5;
+    }
+    .toggle-switch input:checked ~ .track .dot {
+      transform: translateX(20px);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 transition-colors duration-300" id="body">
+  <div class="min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white p-4 border-r border-gray-200 shadow-sm overflow-y-auto" id="sidebar">
+      <div class="text-2xl font-bold text-blue-600 mb-6">CraftSmart</div>
+      <nav class="space-y-2 text-sm">
+        <a href="#" class="flex items-center px-3 py-2 rounded bg-blue-100 font-semibold text-blue-600"><i data-feather="home" class="w-4 h-4 mr-2"></i> Home</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="folder" class="w-4 h-4 mr-2"></i> Projects</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="eye" class="w-4 h-4 mr-2"></i> Job Monitor</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="message-circle" class="w-4 h-4 mr-2"></i> Messages</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="file-text" class="w-4 h-4 mr-2"></i> Reports</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="user-x" class="w-4 h-4 mr-2"></i> Blacklist</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="bar-chart-2" class="w-4 h-4 mr-2"></i> Analytics</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="settings" class="w-4 h-4 mr-2"></i> Settings</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Help Center</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="mail" class="w-4 h-4 mr-2"></i> Contact Us</a>
+        <a href="#" class="flex items-center px-3 py-2 text-red-600 rounded hover:bg-red-100"><i data-feather="log-out" class="w-4 h-4 mr-2"></i> Log Out</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 p-6 space-y-6" id="main">
+      <!-- Topbar -->
+      <div class="bg-white p-4 rounded shadow flex justify-between items-center" id="topbar">
+        <div class="w-full max-w-md">
+          <input type="text" placeholder="Search..." class="w-full px-4 py-2 border rounded shadow-sm bg-gray-50 focus:outline-none" />
+        </div>
+        <div class="flex items-center space-x-4 ml-4">
+          <!-- Toggle -->
+          <label class="toggle-switch relative flex items-center cursor-pointer">
+            <input type="checkbox" id="darkToggle" class="sr-only" onchange="toggleDarkMode(this)">
+            <div class="track w-11 h-6 bg-gray-300 rounded-full relative">
+              <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full"></div>
+            </div>
+          </label>
+          <i data-feather="bell" class="w-5 h-5 text-gray-600"></i>
+          <div class="w-8 h-8 bg-gray-400 rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- Dashboard Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded shadow stat-card">
+          <h3 class="text-lg font-semibold">Total Projects</h3>
+          <p class="text-2xl text-blue-600 font-bold">56</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow stat-card">
+          <h3 class="text-lg font-semibold">Ongoing Projects</h3>
+          <p class="text-2xl text-yellow-500 font-bold">12</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow stat-card">
+          <h3 class="text-lg font-semibold">Completed Projects</h3>
+          <p class="text-2xl text-green-500 font-bold">56</p>
+        </div>
+      </div>
+
+      <!-- Widgets -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Calendar -->
+        <div class="bg-white p-4 rounded shadow widget">
+          <h2 class="font-bold mb-2">Calendar - July 2025</h2>
+          <div class="grid grid-cols-7 text-center gap-1 font-medium text-gray-500 text-xs">
+            <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+            <div>29</div><div>30</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+            <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
+            <div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div>
+            <div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div>
+            <div>27</div><div>28</div><div>29</div><div>30</div><div>31</div><div>1</div><div>2</div>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="bg-white p-4 rounded shadow widget">
+          <h2 class="font-bold mb-2">Messages</h2>
+          <div class="space-y-2">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center">C</div>
+              <div>
+                <p class="font-semibold">CraftBot</p>
+                <p class="text-sm text-gray-600">Your report is ready.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center">J</div>
+              <div>
+                <p class="font-semibold">Joel</p>
+                <p class="text-sm text-gray-600">Please finish your profile.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reports -->
+        <div class="bg-white p-4 rounded shadow widget">
+          <h2 class="font-bold mb-2">Reports</h2>
+          <ul class="list-disc text-sm list-inside space-y-1">
+            <li>15 new reports submitted</li>
+            <li>2 flagged accounts</li>
+            <li>Jobs completed: 86%</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    feather.replace();
+
+    function toggleDarkMode(checkbox) {
+      const isDark = checkbox.checked;
+      const html = document.documentElement;
+      const body = document.getElementById('body');
+      const sidebar = document.getElementById('sidebar');
+      const topbar = document.getElementById('topbar');
+      const main = document.getElementById('main');
+
+      if (isDark) {
+        html.classList.add('dark');
+        body.className = 'bg-gray-900 text-white transition-colors duration-300';
+        sidebar.className = 'w-64 bg-gray-800 p-4 border-r border-gray-700 shadow-sm overflow-y-auto';
+        topbar.className = 'bg-gray-800 p-4 rounded shadow flex justify-between items-center';
+        main.className = 'flex-1 p-6 space-y-6';
+
+        document.querySelectorAll('.widget, .stat-card').forEach(el => {
+          el.classList.remove('bg-white');
+          el.classList.add('bg-gray-700', 'text-white');
+        });
+      } else {
+        html.classList.remove('dark');
+        body.className = 'bg-white text-gray-800 transition-colors duration-300';
+        sidebar.className = 'w-64 bg-white p-4 border-r border-gray-200 shadow-sm overflow-y-auto';
+        topbar.className = 'bg-white p-4 rounded shadow flex justify-between items-center';
+        main.className = 'flex-1 p-6 space-y-6';
+
+        document.querySelectorAll('.widget, .stat-card').forEach(el => {
+          el.classList.remove('bg-gray-700', 'text-white');
+          el.classList.add('bg-white');
+        });
+      }
+    }
+  </script>
+</body>
+</html>

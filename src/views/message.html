@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Messages - CraftSmart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <style>
+    .toggle-switch {
+      transition: background-color 0.3s;
+    }
+    .toggle-switch .dot {
+      transition: transform 0.3s;
+    }
+    .toggle-switch input:checked ~ .bg {
+      background-color: #4f46e5; /* indigo-600 */
+    }
+    .toggle-switch input:checked ~ .bg .dot {
+      transform: translateX(20px);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <div class="min-h-screen flex">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white dark:bg-gray-800 p-4 border-r border-gray-200 dark:border-gray-700 shadow-sm overflow-y-auto">
+      <div class="text-2xl font-bold text-blue-600 mb-6">CraftSmart</div>
+      <nav class="space-y-2 text-sm">
+        <a href="dashboard.html" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700">
+          <i data-feather="home" class="w-4 h-4 mr-2"></i> Home
+        </a>
+        <a href="projects.html" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700">
+          <i data-feather="folder" class="w-4 h-4 mr-2"></i> Projects
+        </a>
+        <a href="job-monitor.html" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700">
+          <i data-feather="eye" class="w-4 h-4 mr-2"></i> Job Monitor
+        </a>
+        <a href="messages.html" class="flex items-center px-3 py-2 rounded bg-blue-100 dark:bg-gray-700 font-semibold text-blue-600 dark:text-white">
+          <i data-feather="message-circle" class="w-4 h-4 mr-2"></i> Messages
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700">
+          <i data-feather="file-text" class="w-4 h-4 mr-2"></i> Reports
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700">
+          <i data-feather="user-x" class="w-4 h-4 mr-2"></i> Black list
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700">
+          <i data-feather="bar-chart-2" class="w-4 h-4 mr-2"></i> Analytics
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700">
+          <i data-feather="settings" class="w-4 h-4 mr-2"></i> Settings
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700">
+          <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Help center
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700">
+          <i data-feather="mail" class="w-4 h-4 mr-2"></i> Contact us
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 text-red-600 rounded hover:bg-red-100 dark:hover:bg-gray-700">
+          <i data-feather="log-out" class="w-4 h-4 mr-2"></i> Log Out
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 space-y-6">
+      
+      <!-- Top Bar -->
+      <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex justify-between items-center">
+        <div class="flex-1 flex justify-center">
+          <input type="text" placeholder="Search..." class="w-full max-w-md px-4 py-2 border rounded shadow-sm bg-gray-50 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring focus:border-blue-300" />
+        </div>
+        <div class="flex items-center space-x-4">
+          <!-- Dark mode switch -->
+          <label class="toggle-switch relative flex items-center cursor-pointer">
+            <input type="checkbox" id="darkToggle" class="sr-only" onchange="toggleDarkMode(this)">
+            <div class="bg w-11 h-6 bg-gray-300 rounded-full relative">
+              <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full"></div>
+            </div>
+          </label>
+          <!-- Notification icon -->
+          <i data-feather="bell" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i>
+          <!-- Profile avatar -->
+          <div class="w-8 h-8 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- Chat Area -->
+      <div class="flex-1 overflow-y-auto bg-white dark:bg-gray-800 rounded-lg p-6 space-y-6 shadow">
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Anil • 9:52pm</p>
+          <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg inline-block">April fool’s day</div>
+          <p class="text-xs text-gray-400 mt-1">Online - Last seen, 2:02pm</p>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Angel Lubin • 11:22pm</p>
+          <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg inline-block">Hey There!</div>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Kaiya Levin • 11:22pm</p>
+          <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg inline-block">Have you seen Jane’s new dog???????</div>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Phillip Aminoff • 11:22pm</p>
+          <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg inline-block">How are you? I know! Where is the time going?!</div>
+          <p class="text-xs text-gray-400 mt-1">Today, 8:30pm</p>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Maria Carder • 11:22pm</p>
+          <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg inline-block">Too freaking cute!!! I love puppies!</div>
+          <p class="text-xs text-gray-400 mt-1">Today, 8:33pm</p>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-500 dark:text-gray-400">Haylie Schleifer • 11:22pm</p>
+          <div class="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg inline-block">Sounds good. I am fine and how are you?</div>
+          <p class="text-xs text-gray-400 mt-1">Today, 8:34pm</p>
+        </div>
+
+        <div class="text-right">
+          <p class="text-sm text-gray-500 dark:text-gray-400">You</p>
+          <div class="bg-blue-600 text-white p-3 rounded-lg inline-block">Yes sure!</div>
+          <p class="text-xs text-gray-400 mt-1">Today, 8:58pm</p>
+        </div>
+      </div>
+
+      <!-- Message Input -->
+      <div class="mt-4 flex items-center bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+        <input type="text" placeholder="Type your message here..." class="flex-1 px-4 py-2 border rounded bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none" />
+        <button class="ml-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Send</button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    feather.replace();
+
+    // Toggle dark mode with switch
+    function toggleDarkMode(checkbox) {
+      document.documentElement.classList.toggle('dark', checkbox.checked);
+    }
+
+    // Set switch state on load if dark mode is on
+    window.addEventListener('DOMContentLoaded', () => {
+      const checkbox = document.getElementById('darkToggle');
+      if (document.documentElement.classList.contains('dark')) {
+        checkbox.checked = true;
+      }
+    });
+  </script>
+</body>
+</html>

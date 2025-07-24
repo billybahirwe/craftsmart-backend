@@ -1,0 +1,125 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Job Monitor - CraftSmart
+  script(src='https://cdn.tailwindcss.com')
+  script(src='https://unpkg.com/feather-icons')
+.min-h-screen.flex
+  // Sidebar (same as dashboard)
+  aside.w-64.bg-white.p-4.border-r.shadow-sm.overflow-y-auto
+    .text-2xl.font-bold.text-blue-600.mb-6 CraftSmart
+    nav.space-y-2.text-sm
+      a.flex.items-center.px-3.py-2.rounded(href='dashboard.html' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='home')
+        |  Home
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='folder')
+        |  Projects
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='briefcase')
+        |  Jobs Available
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='users')
+        |  Employers
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='user')
+        |  Craftmen
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='slash')
+        |  Blacklisted
+      a.flex.items-center.px-3.py-2.rounded.bg-blue-100.font-semibold.text-blue-600(href='/dashboard/monitor')
+        i.w-4.h-4.mr-2(data-feather='eye')
+        |  Job Monitor
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='message-circle')
+        |  Message
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='file-text')
+        |  Reports
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='user-x')
+        |  Black list
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='bar-chart-2')
+        |  Analytics
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='settings')
+        |  Settings
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='help-circle')
+        |  Help center
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100')
+        i.w-4.h-4.mr-2(data-feather='mail')
+        |  Contact us
+      a.flex.items-center.px-3.py-2.text-red-600.rounded(href='#' class='hover:bg-red-100')
+        i.w-4.h-4.mr-2(data-feather='log-out')
+        |  Log Out
+  // Main Content
+  main.flex-1.p-6.space-y-6
+    // Top Bar
+    .bg-white.p-4.rounded-lg.shadow.flex.justify-between.items-center
+      .flex-1.flex.justify-center
+        input.w-full.max-w-md.px-4.py-2.border.rounded.shadow-sm(type='text' placeholder='Search...' class='focus:outline-none focus:ring focus:border-blue-300')
+      .flex.items-center.space-x-4
+        label.flex.items-center.cursor-pointer
+          input.sr-only(type='checkbox')
+          .w-11.h-6.bg-gray-300.rounded-full.relative
+            .dot.absolute.left-1.top-1.bg-white.w-4.h-4.rounded-full.transition
+        i.w-5.h-5.text-gray-600(data-feather='bell')
+        .w-8.h-8.bg-gray-300.rounded-full
+    // Job Monitor Content
+    div
+      h1.text-3xl.font-semibold.mb-2 Job Monitor
+      p.text-gray-600.text-sm.mb-4 Track job progress and status
+    // Stats
+    .grid.grid-cols-1.gap-6(class='sm:grid-cols-3')
+      .bg-white.shadow.rounded-lg.p-4.text-center
+        h2.text-sm.text-gray-600 Total Jobs
+        p.text-3xl.font-bold.text-blue-600 56
+      .bg-white.shadow.rounded-lg.p-4.text-center
+        h2.text-sm.text-gray-600 Active Jobs
+        p.text-3xl.font-bold.text-green-600 26
+      .bg-white.shadow.rounded-lg.p-4.text-center
+        h2.text-sm.text-gray-600 Completed Jobs
+        p.text-3xl.font-bold.text-gray-800 30
+    // Job Table
+    .bg-white.p-4.rounded-lg.shadow.mt-6
+      .flex.justify-between.items-center.mb-4
+        h3.font-semibold.text-lg Jobs List
+        button.bg-blue-600.text-white.px-4.py-2.rounded(class='hover:bg-blue-700') Export to PDF
+      .flex.items-center.space-x-4.text-sm.mb-4
+        span Go to
+        select.border.rounded.px-2.py-1
+          option 1
+          option 2
+          option 3
+          option 4
+          option 5
+        span Page
+        span.ml-4 Showing 20 per page
+      .overflow-x-auto
+        table.min-w-full.text-sm.text-left.border
+          thead.bg-gray-100.text-gray-700
+            tr
+              th.py-2.px-4.border #
+              th.py-2.px-4.border Job Title
+              th.py-2.px-4.border Status
+              th.py-2.px-4.border Employer
+              th.py-2.px-4.border Date
+          tbody
+            tr
+              td.py-2.px-4.border 1
+              td.py-2.px-4.border Floor Tiling
+              td.py-2.px-4.border.text-green-600 Active
+              td.py-2.px-4.border CraftCon
+              td.py-2.px-4.border Jul 22, 2025
+            tr
+              td.py-2.px-4.border 2
+              td.py-2.px-4.border Roof Repair
+              td.py-2.px-4.border.text-gray-600 Completed
+              td.py-2.px-4.border BuildRight
+              td.py-2.px-4.border Jul 18, 2025
+            // Add more rows here
+script.
+  feather.replace();

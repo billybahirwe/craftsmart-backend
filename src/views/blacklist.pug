@@ -1,0 +1,143 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Black List - CraftSmart
+  script(src='https://cdn.tailwindcss.com')
+  script(src='https://unpkg.com/feather-icons')
+  script.
+    tailwind.config = {
+    darkMode: 'class',
+    }
+  style.
+    .toggle-switch {
+    transition: background-color 0.3s;
+    }
+    .toggle-switch .dot {
+    transition: transform 0.3s;
+    }
+    .toggle-switch input:checked ~ .bg {
+    background-color: #4f46e5; /* indigo-600 */
+    }
+    .toggle-switch input:checked ~ .bg .dot {
+    transform: translateX(20px);
+    }
+.min-h-screen.flex
+  // Sidebar
+  aside.w-64.bg-white.p-4.border-r.border-gray-200.shadow-sm.overflow-y-auto(class='dark:bg-gray-800 dark:border-gray-700')
+    .text-2xl.font-bold.text-blue-600.mb-6 CraftSmart
+    nav.space-y-2.text-sm
+      a.flex.items-center.px-3.py-2.rounded(href='dashboard.html' class='hover:bg-blue-100 dark:hover:bg-gray-700')
+        i.w-4.h-4.mr-2(data-feather='home')
+        |  Home
+      a.flex.items-center.px-3.py-2.rounded(href='job-monitor.html' class='hover:bg-blue-100 dark:hover:bg-gray-700')
+        i.w-4.h-4.mr-2(data-feather='eye')
+        |  Job Monitor
+      a.flex.items-center.px-3.py-2.rounded(href='projects.html' class='hover:bg-blue-100 dark:hover:bg-gray-700')
+        i.w-4.h-4.mr-2(data-feather='folder')
+        |  Projects
+      a.flex.items-center.px-3.py-2.rounded(href='messages.html' class='hover:bg-blue-100 dark:hover:bg-gray-700')
+        i.w-4.h-4.mr-2(data-feather='message-circle')
+        |  Message
+      a.flex.items-center.px-3.py-2.rounded(href='reports.html' class='hover:bg-blue-100 dark:hover:bg-gray-700')
+        i.w-4.h-4.mr-2(data-feather='file-text')
+        |  Reports
+      a.flex.items-center.px-3.py-2.rounded.bg-blue-100.font-semibold.text-blue-600(href='blacklist.html' class='dark:bg-gray-700 dark:text-white')
+        i.w-4.h-4.mr-2(data-feather='user-x')
+        |  Black List
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100 dark:hover:bg-gray-700')
+        i.w-4.h-4.mr-2(data-feather='bar-chart-2')
+        |  Analytics
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100 dark:hover:bg-gray-700')
+        i.w-4.h-4.mr-2(data-feather='settings')
+        |  Settings
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100 dark:hover:bg-gray-700')
+        i.w-4.h-4.mr-2(data-feather='help-circle')
+        |  Help center
+      a.flex.items-center.px-3.py-2.rounded(href='#' class='hover:bg-blue-100 dark:hover:bg-gray-700')
+        i.w-4.h-4.mr-2(data-feather='mail')
+        |  Contact us
+      a.flex.items-center.px-3.py-2.text-red-600.rounded(href='#' class='hover:bg-red-100 dark:hover:bg-gray-700')
+        i.w-4.h-4.mr-2(data-feather='log-out')
+        |  Log Out
+  // Main Content
+  main.flex-1.p-6.space-y-6
+    // Top Bar
+    .bg-white.p-4.rounded-lg.shadow.flex.justify-between.items-center(class='dark:bg-gray-800')
+      .flex-1.flex.justify-center
+        input.w-full.max-w-md.px-4.py-2.border.rounded.shadow-sm.bg-gray-50(type='text' placeholder='Search...' class='dark:bg-gray-700 dark:text-white focus:outline-none focus:ring focus:border-blue-300')
+      .flex.items-center.space-x-4
+        // Dark mode switch
+        label.toggle-switch.relative.flex.items-center.cursor-pointer
+          input#darkToggle.sr-only(type='checkbox' onchange='toggleDarkMode(this)')
+          .bg.w-11.h-6.bg-gray-300.rounded-full.relative
+            .dot.absolute.left-1.top-1.bg-white.w-4.h-4.rounded-full
+        // Notification icon
+        i.w-5.h-5.text-gray-600(data-feather='bell' class='dark:text-gray-300')
+        // Profile avatar
+        .w-8.h-8.bg-gray-300.rounded-full(class='dark:bg-gray-600')
+    // Header Buttons
+    .flex.justify-between.items-center
+      h2.text-xl.font-semibold Black List
+      .space-x-2
+        button.bg-red-600.text-white.px-4.py-2.rounded(class='hover:bg-red-700') Add to Black List
+        button.bg-gray-600.text-white.px-4.py-2.rounded(class='hover:bg-gray-700') Export to PDF
+    // Black List Table
+    .overflow-x-auto
+      table.w-full.text-left.border.border-gray-200(class='dark:border-gray-700')
+        thead.bg-gray-200.text-gray-700(class='dark:bg-gray-700 dark:text-gray-200')
+          tr
+            th.px-4.py-2 #
+            th.px-4.py-2 Name
+            th.px-4.py-2 Email
+            th.px-4.py-2 Phone
+            th.px-4.py-2 Reason
+            th.px-4.py-2 Action
+        tbody.bg-white(class='dark:bg-gray-800')
+          tr.border-t.border-gray-200(class='dark:border-gray-700')
+            td.px-4.py-2 1
+            td.px-4.py-2 Karin
+            td.px-4.py-2 karin@gmail.com
+            td.px-4.py-2 0762247887
+            td.px-4.py-2 Fraud
+            td.px-4.py-2.text-blue-600.cursor-pointer(class='hover:underline') View / Edit
+          tr.border-t.border-gray-200(class='dark:border-gray-700')
+            td.px-4.py-2 2
+            td.px-4.py-2 Shabrina
+            td.px-4.py-2 shabrina@gmail.com
+            td.px-4.py-2 0763324564
+            td.px-4.py-2 Spam
+            td.px-4.py-2.text-blue-600.cursor-pointer(class='hover:underline') View / Edit
+          tr.border-t.border-gray-200(class='dark:border-gray-700')
+            td.px-4.py-2 3
+            td.px-4.py-2 Karin
+            td.px-4.py-2 karin@gmail.com
+            td.px-4.py-2 072345637493
+            td.px-4.py-2 Scam
+            td.px-4.py-2.text-blue-600.cursor-pointer(class='hover:underline') View / Edit
+          tr.border-t.border-gray-200(class='dark:border-gray-700')
+            td.px-4.py-2 4
+            td.px-4.py-2 Joel
+            td.px-4.py-2 joel@gmail.com
+            td.px-4.py-2 0752354845
+            td.px-4.py-2 Unfinished Work
+            td.px-4.py-2.text-blue-600.cursor-pointer(class='hover:underline') View / Edit
+    // Pagination
+    .flex.justify-between.text-sm.text-gray-600.mt-4(class='dark:text-gray-400')
+      div Go To
+      div 15
+      div 20 / pages
+      div Total: 4
+script.
+  feather.replace();
+  // Toggle dark mode with switch
+  function toggleDarkMode(checkbox) {
+  document.documentElement.classList.toggle('dark', checkbox.checked);
+  }
+  // Set switch state on load if dark mode is on
+  window.addEventListener('DOMContentLoaded', () => {
+  const checkbox = document.getElementById('darkToggle');
+  if (document.documentElement.classList.contains('dark')) {
+  checkbox.checked = true;
+  }
+  });

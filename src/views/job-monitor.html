@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Monitor - CraftSmart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="min-h-screen flex">
+    
+    <!-- Sidebar (same as dashboard) -->
+    <aside class="w-64 bg-white p-4 border-r shadow-sm overflow-y-auto">
+      <div class="text-2xl font-bold text-blue-600 mb-6">CraftSmart</div>
+      <nav class="space-y-2 text-sm">
+        <a href="dashboard.html" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="home" class="w-4 h-4 mr-2"></i> Home
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="folder" class="w-4 h-4 mr-2"></i> Projects
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="briefcase" class="w-4 h-4 mr-2"></i> Jobs Available
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="users" class="w-4 h-4 mr-2"></i> Employers
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="user" class="w-4 h-4 mr-2"></i> Craftmen
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="slash" class="w-4 h-4 mr-2"></i> Blacklisted
+        </a>
+        <a href="job-monitor.html" class="flex items-center px-3 py-2 rounded bg-blue-100 font-semibold text-blue-600">
+          <i data-feather="eye" class="w-4 h-4 mr-2"></i> Job Monitor
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="message-circle" class="w-4 h-4 mr-2"></i> Message
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="file-text" class="w-4 h-4 mr-2"></i> Reports
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="user-x" class="w-4 h-4 mr-2"></i> Black list
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="bar-chart-2" class="w-4 h-4 mr-2"></i> Analytics
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="settings" class="w-4 h-4 mr-2"></i> Settings
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Help center
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100">
+          <i data-feather="mail" class="w-4 h-4 mr-2"></i> Contact us
+        </a>
+        <a href="#" class="flex items-center px-3 py-2 text-red-600 rounded hover:bg-red-100">
+          <i data-feather="log-out" class="w-4 h-4 mr-2"></i> Log Out
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 space-y-6">
+      
+      <!-- Top Bar -->
+      <div class="bg-white p-4 rounded-lg shadow flex justify-between items-center">
+        <div class="flex-1 flex justify-center">
+          <input type="text" placeholder="Search..." class="w-full max-w-md px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring focus:border-blue-300" />
+        </div>
+        <div class="flex items-center space-x-4">
+          <label class="flex items-center cursor-pointer">
+            <input type="checkbox" class="sr-only" />
+            <div class="w-11 h-6 bg-gray-300 rounded-full relative">
+              <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
+            </div>
+          </label>
+          <i data-feather="bell" class="w-5 h-5 text-gray-600"></i>
+          <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- Job Monitor Content -->
+      <div>
+        <h1 class="text-3xl font-semibold mb-2">Job Monitor</h1>
+        <p class="text-gray-600 text-sm mb-4">Track job progress and status</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="bg-white shadow rounded-lg p-4 text-center">
+          <h2 class="text-sm text-gray-600">Total Jobs</h2>
+          <p class="text-3xl font-bold text-blue-600">56</p>
+        </div>
+        <div class="bg-white shadow rounded-lg p-4 text-center">
+          <h2 class="text-sm text-gray-600">Active Jobs</h2>
+          <p class="text-3xl font-bold text-green-600">26</p>
+        </div>
+        <div class="bg-white shadow rounded-lg p-4 text-center">
+          <h2 class="text-sm text-gray-600">Completed Jobs</h2>
+          <p class="text-3xl font-bold text-gray-800">30</p>
+        </div>
+      </div>
+
+      <!-- Job Table -->
+      <div class="bg-white p-4 rounded-lg shadow mt-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="font-semibold text-lg">Jobs List</h3>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Export to PDF</button>
+        </div>
+        <div class="flex items-center space-x-4 text-sm mb-4">
+          <span>Go to</span>
+          <select class="border rounded px-2 py-1">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+          <span>Page</span>
+          <span class="ml-4">Showing 20 per page</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm text-left border">
+            <thead class="bg-gray-100 text-gray-700">
+              <tr>
+                <th class="py-2 px-4 border">#</th>
+                <th class="py-2 px-4 border">Job Title</th>
+                <th class="py-2 px-4 border">Status</th>
+                <th class="py-2 px-4 border">Employer</th>
+                <th class="py-2 px-4 border">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="py-2 px-4 border">1</td>
+                <td class="py-2 px-4 border">Floor Tiling</td>
+                <td class="py-2 px-4 border text-green-600">Active</td>
+                <td class="py-2 px-4 border">CraftCon</td>
+                <td class="py-2 px-4 border">Jul 22, 2025</td>
+              </tr>
+              <tr>
+                <td class="py-2 px-4 border">2</td>
+                <td class="py-2 px-4 border">Roof Repair</td>
+                <td class="py-2 px-4 border text-gray-600">Completed</td>
+                <td class="py-2 px-4 border">BuildRight</td>
+                <td class="py-2 px-4 border">Jul 18, 2025</td>
+              </tr>
+              <!-- Add more rows here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    feather.replace();
+  </script>
+</body>
+</html>
