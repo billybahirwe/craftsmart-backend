@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title User Registration - CraftSmart
+    link(rel='stylesheet' href='/css/user-register.css')
+    script(src='https://cdn.tailwindcss.com')
+  body(class="bg-[#F8F9FC] flex justify-center items-center min-h-screen")
+    .bg-white.p-8.rounded.shadow-md.w-full.max-w-md
+      h2.text-2xl.font-bold.text-center.text-blue-600.mb-6 Register
+      if error
+        p.text-red-600.mb-4 #{error}
+      form(action='/register' method='POST')
+        .mb-4
+          label.block.mb-2.text-gray-700(for='username') Username
+          input#username.w-full.p-2.border.rounded(type='text' name='username' required placeholder='Enter your username')
+        .mb-4
+          label.block.mb-2.text-gray-700(for='email') Email
+          input#email.w-full.p-2.border.rounded(type='email' name='email' required placeholder='Enter your email')
+        .mb-4
+          label.block.mb-2.text-gray-700(for='password') Password
+          input#password.w-full.p-2.border.rounded(type='password' name='password' required placeholder='Enter your password')
+        .mb-4
+          label.block.mb-2.text-gray-700 Register as:
+          select#role.w-full.p-2.border.rounded(name='role' required)
+            option(value='') Select a role
+            option(value='employer') Employer
+            option(value='craftsman') Craftsman
+        .mb-4
+          label.block.mb-2.text-gray-700(for='contact') Contact Number
+          input#contact.w-full.p-2.border.rounded(type='text' name='contact' placeholder='e.g. +1234567890')
+        .mb-4
+          label.block.mb-2.text-gray-700(for='location') Location
+          input#location.w-full.p-2.border.rounded(type='text' name='location' placeholder='City, State, Country')
+        .mb-4
+          label.block.mb-2.text-gray-700(for='skills') Skills (comma separated)
+          input#skills.w-full.p-2.border.rounded(type='text' name='skills' placeholder='e.g. plumbing, carpentry, painting')
+        .mb-4
+          label.block.mb-2.text-gray-700(for='bio') Bio
+          textarea#bio.w-full.p-2.border.rounded(name='bio' rows='3' placeholder='Brief bio about yourself...')
+        button.w-full.bg-blue-600.text-white.py-2.rounded(type='submit' class='hover:bg-blue-700') Register

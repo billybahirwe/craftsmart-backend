@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics - CraftSmart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  <style>
+    .toggle-switch {
+      transition: background-color 0.3s;
+    }
+    .toggle-switch .dot {
+      transition: transform 0.3s;
+    }
+    .toggle-switch input:checked ~ .bg {
+      background-color: #4f46e5;
+    }
+    .toggle-switch input:checked ~ .bg .dot {
+      transform: translateX(20px);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<div class="min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white dark:bg-gray-800 p-4 border-r border-gray-200 dark:border-gray-700 shadow-sm overflow-y-auto">
+    <div class="text-2xl font-bold text-blue-600 mb-6">CraftSmart</div>
+    <nav class="space-y-2 text-sm">
+      <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="home" class="w-4 h-4 mr-2"></i> Home</a>
+      <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="folder" class="w-4 h-4 mr-2"></i> Projects</a>
+      <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="eye" class="w-4 h-4 mr-2"></i> Job Monitor</a>
+      <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="message-circle" class="w-4 h-4 mr-2"></i> Messages</a>
+      <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="file-text" class="w-4 h-4 mr-2"></i> Reports</a>
+      <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="user-x" class="w-4 h-4 mr-2"></i> Black List</a>
+      <a href="#" class="flex items-center px-3 py-2 rounded bg-blue-100 dark:bg-gray-700 font-semibold text-blue-600 dark:text-white"><i data-feather="bar-chart-2" class="w-4 h-4 mr-2"></i> Analytics</a>
+      <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="settings" class="w-4 h-4 mr-2"></i> Settings</a>
+      <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Help Center</a>
+      <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-700"><i data-feather="mail" class="w-4 h-4 mr-2"></i> Contact Us</a>
+      <a href="#" class="flex items-center px-3 py-2 text-red-600 rounded hover:bg-red-100 dark:hover:bg-gray-700"><i data-feather="log-out" class="w-4 h-4 mr-2"></i> Log Out</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6 space-y-6">
+    <!-- Top Bar -->
+    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex justify-between items-center">
+      <input type="text" placeholder="Search..." class="w-full max-w-md px-4 py-2 border rounded shadow-sm bg-gray-50 dark:bg-gray-700 dark:text-white focus:outline-none" />
+      <label class="toggle-switch relative flex items-center cursor-pointer ml-4">
+        <input type="checkbox" id="darkToggle" class="sr-only" onchange="toggleDarkMode(this)">
+        <div class="bg w-11 h-6 bg-gray-300 rounded-full relative">
+          <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full"></div>
+        </div>
+      </label>
+    </div>
+
+    <!-- Analytics Grid -->
+    <h2 class="text-2xl font-semibold">Analytics Overview</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Total Users</h4><p class="text-2xl">3456</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Active Craftsmen</h4><p class="text-2xl">256</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Total Work Completed</h4><p class="text-2xl">256</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Total Revenue</h4><p class="text-2xl">$56K</p></div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Messages</h4><p class="text-2xl">784</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Complaints Received</h4><p class="text-2xl">3</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Reports</h4><p class="text-2xl">200</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Settings Accesses</h4><p class="text-2xl">254</p></div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Craftmen A</h4><p class="text-2xl">120</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Craftmen B</h4><p class="text-2xl">130</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Craftmen C</h4><p class="text-2xl">110</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Craftmen D</h4><p class="text-2xl">40</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Craftmen E</h4><p class="text-2xl">80</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Craftmen F</h4><p class="text-2xl">70</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Admins</h4><p class="text-2xl">150</p></div>
+
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Pending Jobs</h4><p class="text-2xl">56</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>Cancelled Jobs</h4><p class="text-2xl">13</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>In Progress</h4><p class="text-2xl">21</p></div>
+      <div class="bg-white dark:bg-gray-800 p-4 rounded shadow"><h4>All Jobs</h4><p class="text-2xl">87</p></div>
+    </div>
+
+    <!-- Craftmen Session Time -->
+    <div class="bg-white dark:bg-gray-800 p-4 rounded shadow mt-6">
+      <h4 class="text-lg mb-2">Craftmen Session Time (February)</h4>
+      <div class="grid grid-cols-7 text-center mb-1">
+        <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+      </div>
+      <div class="grid grid-cols-7 text-center font-medium">
+        <span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
+        <span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
+      </div>
+      <div class="text-sm text-right mt-2 text-gray-500 dark:text-gray-400">Less — More</div>
+    </div>
+  </main>
+</div>
+
+<script>
+  feather.replace();
+  function toggleDarkMode(checkbox) {
+    document.documentElement.classList.toggle('dark', checkbox.checked);
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    const checkbox = document.getElementById('darkToggle');
+    checkbox.checked = document.documentElement.classList.contains('dark');
+  });
+</script>
+</body>
+</html>

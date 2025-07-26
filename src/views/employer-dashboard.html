@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employer Dashboard - CraftSmart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <div class="text-2xl font-bold text-blue-600">CraftSmart</div>
+    <div class="space-x-4">
+      <a href="#" class="text-gray-700 hover:text-blue-500">Post Case</a>
+      <a href="#" class="text-gray-700 hover:text-blue-500">Manage Cases</a>
+      <a href="#" class="text-gray-700 hover:text-blue-500">Browse Craftsmen</a>
+      <a href="#" class="text-gray-700 hover:text-blue-500">My Reviews</a>
+      <a href="index.html" class="text-red-500 font-semibold">Logout</a>
+    </div>
+  </nav>
+
+  <section class="p-8 space-y-8">
+    <h1 class="text-2xl font-bold">Welcome, Employer!</h1>
+
+    <!-- Post Case -->
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">Post a New Work Case</h2>
+      <p class="mb-2">Define the job's content, set budget, contact info, and location.</p>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Post New Case</button>
+    </div>
+
+    <!-- Browse Craftsmen -->
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">Browse & Filter Craftsmen</h2>
+      <p class="mb-2">Search by skills, location, or rating.</p>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Find Craftsmen</button>
+    </div>
+
+    <!-- View Profiles -->
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">View Full Craftsmen Profiles</h2>
+      <ul class="list-disc pl-5 text-gray-700">
+        <li>Bio and contact info</li>
+        <li>Location and skill specialties</li>
+        <li>Ratings and reviews</li>
+        <li>Previous case records</li>
+      </ul>
+    </div>
+
+    <!-- Leave Review -->
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">Rate and Review Completed Projects</h2>
+      <p>Leave a review after each project to help improve the community.</p>
+      <button class="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Leave a Review</button>
+    </div>
+  </section>
+</body>
+</html>

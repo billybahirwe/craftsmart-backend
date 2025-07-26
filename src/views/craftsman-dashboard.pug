@@ -1,0 +1,17 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Craftsman Dashboard - CraftSmart
+  script(src='https://cdn.tailwindcss.com')
+nav.bg-white.shadow.p-4.flex.justify-between.items-center
+  .text-2xl.font-bold.text-blue-600 CraftSmart
+  .space-x-4
+    a.text-gray-700(href='#' class='hover:text-blue-500') Available Jobs
+    a.text-gray-700(href='#' class='hover:text-blue-500') My Cases
+    a.text-gray-700(href='#' class='hover:text-blue-500') Edit Profile
+    a.text-red-500.font-semibold(href='index.html') Logout
+section.p-8
+  h1.text-2xl.font-bold.mb-4 Welcome, Craftsman!
+  p.mb-4 Browse open jobs, update your profile, and manage accepted cases.
+  button.bg-green-600.text-white.px-6.py-2.rounded(class='hover:bg-green-700') View Jobs

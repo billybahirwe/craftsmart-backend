@@ -76,6 +76,15 @@ app.use('/api/message', messageRoutes);
 app.use('/api/craftsmen', craftsmanRoutes);
 app.use('/', authRoutes);
 
+// ===== New /employer Route =====
+app.get('/employer', (req, res) => {
+  res.render('employer-dashboard', { title: 'Employer Dashboard' });
+});
+// ===== New /craftsman Route =====
+app.get('/craftsman', (req, res) => {
+  res.render('craftsman-dashboard', { title: 'Craftsman Dashboard' });
+});
+
 // ===== Error Handling (MUST be last) =====
 app.use(notFound);
 app.use(errorHandler);

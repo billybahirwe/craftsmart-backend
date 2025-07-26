@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Login - CraftSmart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">User Login</h2>
+    <form action="employer-dashboard.html" method="GET" id="loginForm">
+      <div class="mb-4">
+        <label class="block mb-2 text-gray-700" for="username">Username</label>
+        <input type="text" id="username" name="username" required class="w-full p-2 border rounded" />
+      </div>
+      <div class="mb-4">
+        <label class="block mb-2 text-gray-700" for="password">Password</label>
+        <input type="password" id="password" name="password" required class="w-full p-2 border rounded" />
+      </div>
+      <div class="mb-4">
+        <label class="block mb-2 text-gray-700">Login as:</label>
+        <select name="role" id="role" class="w-full p-2 border rounded">
+          <option value="employer">Employer</option>
+          <option value="craftsman">Craftsman</option>
+        </select>
+      </div>
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Login</button>
+    </form>
+    <script>
+      document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const role = document.getElementById('role').value;
+        if (role === 'employer') {
+          window.location.href = 'employer-dashboard.html';
+        } else {
+          window.location.href = 'craftsman-dashboard.html';
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>

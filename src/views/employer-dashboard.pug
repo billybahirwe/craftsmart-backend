@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Employer Dashboard - CraftSmart
+    script(src='https://cdn.tailwindcss.com')
+  body.bg-gray-100
+    nav.bg-white.shadow.p-4.flex.justify-between.items-center
+      .text-2xl.font-bold.text-blue-600 CraftSmart
+      .space-x-4
+        a(class="text-gray-700 hover:text-blue-500" href='#') Post Case
+        a(class="text-gray-700 hover:text-blue-500" href='#') Manage Cases
+        a(class="text-gray-700 hover:text-blue-500" href='#') Browse Craftsmen
+        a(class="text-gray-700 hover:text-blue-500" href='#') My Reviews
+        a.text-red-500.font-semibold(href='index.html') Logout
+    section.p-8.space-y-8
+      h1.text-2xl.font-bold Welcome, Employer!
+      // Post Case
+      .bg-white.p-6.rounded.shadow
+        h2.text-xl.font-semibold.mb-2 Post a New Work Case
+        p.mb-2 Define the job's content, set budget, contact info, and location.
+        button(class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700") Post New Case
+      // Browse Craftsmen
+      .bg-white.p-6.rounded.shadow
+        h2.text-xl.font-semibold.mb-2 Browse &amp; Filter Craftsmen
+        p.mb-2 Search by skills, location, or rating.
+        button(class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600") Find Craftsmen
+      // View Profiles
+      .bg-white.p-6.rounded.shadow
+        h2.text-xl.font-semibold.mb-2 View Full Craftsmen Profiles
+        ul.list-disc.pl-5.text-gray-700
+          li Bio and contact info
+          li Location and skill specialties
+          li Ratings and reviews
+          li Previous case records
+      // Leave Review
+      .bg-white.p-6.rounded.shadow
+        h2.text-xl.font-semibold.mb-2 Rate and Review Completed Projects
+        p Leave a review after each project to help improve the community.
+        button(class="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700") Leave a Review

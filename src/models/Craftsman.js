@@ -1,34 +1,21 @@
-// models/Craftsman.js
 const mongoose = require('mongoose');
 
 const craftsmanSchema = new mongoose.Schema({
-  name: {
+  username: { type: String, required: true, unique: true, trim: true },
+  email: {
     type: String,
     required: true,
-    trim: true
+    unique: true,
+    trim: true,
+    lowercase: true,
+    match: [/.+\@.+\..+/, 'Please enter a valid email address'],
   },
-  phone: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  location: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  bio: {
-    type: String,
-    default: ''
-  },
-  skills: {
-    type: [String],
-    default: []
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
+  password: { type: String, required: true },
+  contact: { type: String, unique: true, sparse: true, trim: true },
+  location: { type: String },
+  skills: { type: [String], default: [] },
+  bio: { type: String, default: '' },
+  createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Craftsman', craftsmanSchema);
