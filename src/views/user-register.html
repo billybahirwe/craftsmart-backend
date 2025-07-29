@@ -1,51 +1,138 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title User Registration - CraftSmart
-    script(src="https://cdn.tailwindcss.com")
-  body.bg-gray-100.flex.items-center.justify-center.min-h-screen
-    .bg-white.p-8.rounded.shadow-md.w-full.max-w-md
-      h2.text-2xl.font-bold.text-center.text-blue-600.mb-6 Register
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Registration - CraftSmart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">Register</h2>
 
-      if error
-        p.text-red-600.mb-4 #{error}
+    <form action="/register" method="POST">
+      <div class="mb-4">
+        <label for="username" class="block mb-2 text-gray-700">Username</label>
+        <input id="username" type="text" name="username" required placeholder="Enter your username" class="w-full p-2 border rounded" />
+      </div>
 
-      form(action="/register" method="POST")
-        .mb-4
-          label.block.mb-2.text-gray-700(for="username") Username
-          input#username.w-full.p-2.border.rounded(type="text" name="username" required placeholder="Enter your username")
+      <div class="mb-4">
+        <label for="email" class="block mb-2 text-gray-700">Email (optional)</label>
+        <input id="email" type="email" name="email" placeholder="Enter your email" class="w-full p-2 border rounded" />
+      </div>
 
-        .mb-4
-          label.block.mb-2.text-gray-700(for="email") Email
-          input#email.w-full.p-2.border.rounded(type="email" name="email" required placeholder="Enter your email")
+      <div class="mb-4">
+        <label for="password" class="block mb-2 text-gray-700">Password</label>
+        <input id="password" type="password" name="password" required placeholder="Enter your password" class="w-full p-2 border rounded" />
+      </div>
 
-        .mb-4
-          label.block.mb-2.text-gray-700(for="password") Password
-          input#password.w-full.p-2.border.rounded(type="password" name="password" required placeholder="Enter your password")
+      <div class="mb-4">
+        <label for="role" class="block mb-2 text-gray-700">Register as:</label>
+        <select id="role" name="role" required class="w-full p-2 border rounded">
+          <option value="">Select a role</option>
+          <option value="employer">Employer</option>
+          <option value="craftsman">Craftsman</option>
+        </select>
+      </div>
 
-        .mb-4
-          label.block.mb-2.text-gray-700(for="role") Register as:
-          select#role.w-full.p-2.border.rounded(name="role" required)
-            option(value="") Select a role
-            option(value="employer") Employer
-            option(value="craftsman") Craftsman
+      <div class="mb-4">
+        <label for="mobileNumber" class="block mb-2 text-gray-700">Mobile Number</label>
+        <input id="mobileNumber" type="text" name="mobileNumber" required placeholder="e.g. +256712345678" class="w-full p-2 border rounded" />
+      </div>
 
-        .mb-4
-          label.block.mb-2.text-gray-700(for="mobileNumber") Mobile Number
-          input#mobileNumber.w-full.p-2.border.rounded(type="text" name="mobileNumber" required placeholder="e.g. +1234567890")
+      <!-- Location section with Region → District → City/Sub-county -->
+      <div class="mb-4">
+        <label class="block mb-2 text-gray-700">Location (Region, District, Sub-county)</label>
 
-        .mb-4
-          label.block.mb-2.text-gray-700(for="location") Location
-          input#location.w-full.p-2.border.rounded(type="text" name="location" placeholder="City, State")
+        <select id="region" name="region" required class="w-full mb-2 p-2 border rounded" onchange="populateDistricts()">
+          <option value="">Select Region</option>
+          <option value="Central">Central</option>
+          <option value="Eastern">Eastern</option>
+          <option value="Northern">Northern</option>
+          <option value="Western">Western</option>
+        </select>
 
-        .mb-4
-          label.block.mb-2.text-gray-700(for="skills") Skills (comma-separated)
-          input#skills.w-full.p-2.border.rounded(type="text" name="skills" placeholder="e.g. plumbing, carpentry")
+        <select id="district" name="district" required class="w-full mb-2 p-2 border rounded" onchange="populateCities()">
+          <option value="">Select District</option>
+        </select>
 
-        .mb-4
-          label.block.mb-2.text-gray-700(for="bio") Bio
-          textarea#bio.w-full.p-2.border.rounded(name="bio" rows="3" placeholder="Tell us a bit about yourself...")
+        <select id="city" name="city" required class="w-full p-2 border rounded">
+          <option value="">Select Sub-county / City</option>
+        </select>
+      </div>
 
-        button.w-full.bg-blue-600.text-white.py-2.rounded(type="submit") Register
+      <div class="mb-4">
+        <label for="skills" class="block mb-2 text-gray-700">Skills (comma-separated)</label>
+        <input id="skills" type="text" name="skills" placeholder="e.g. plumbing, carpentry" class="w-full p-2 border rounded" />
+      </div>
+
+      <div class="mb-4">
+        <label for="bio" class="block mb-2 text-gray-700">Bio</label>
+        <textarea id="bio" name="bio" rows="3" placeholder="Tell us a bit about yourself..." class="w-full p-2 border rounded"></textarea>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded">Register</button>
+    </form>
+  </div>
+
+  <script>
+    const districts = {
+      Central: {
+        Kampala: ["Rubaga", "Nakawa", "Makindye"],
+        Wakiso: ["Entebbe", "Kira", "Nansana"],
+        Mukono: ["Mukono Town", "Seeta", "Namilyango"]
+      },
+      Eastern: {
+        Jinja: ["Bugembe", "Mpumudde"],
+        Mbale: ["Industrial", "Wanale"],
+        Tororo: ["Malaba", "Mukuju"]
+      },
+      Northern: {
+        Gulu: ["Pece", "Layibi"],
+        Lira: ["Ojwina", "Adyel"],
+        Arua: ["River Oli", "Adumi"]
+      },
+      Western: {
+        Mbarara: ["Kamukuzi", "Kakoba"],
+        Kabale: ["Central", "Kigongi"],
+        FortPortal: ["East Division", "West Division"]
+      }
+    };
+
+    function populateDistricts() {
+      const region = document.getElementById("region").value;
+      const districtSelect = document.getElementById("district");
+      const citySelect = document.getElementById("city");
+
+      districtSelect.innerHTML = '<option value="">Select District</option>';
+      citySelect.innerHTML = '<option value="">Select Sub-county / City</option>';
+
+      if (region && districts[region]) {
+        Object.keys(districts[region]).forEach(district => {
+          const option = document.createElement("option");
+          option.value = district;
+          option.text = district;
+          districtSelect.appendChild(option);
+        });
+      }
+    }
+
+    function populateCities() {
+      const region = document.getElementById("region").value;
+      const district = document.getElementById("district").value;
+      const citySelect = document.getElementById("city");
+
+      citySelect.innerHTML = '<option value="">Select Sub-county / City</option>';
+
+      if (region && district && districts[region][district]) {
+        districts[region][district].forEach(city => {
+          const option = document.createElement("option");
+          option.value = city;
+          option.text = city;
+          citySelect.appendChild(option);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

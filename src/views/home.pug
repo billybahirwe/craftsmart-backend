@@ -5,7 +5,6 @@ html
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     title CraftSmart - Home
     link(rel='stylesheet' href='/css/home.css')
-
     script(src='https://cdn.tailwindcss.com')
 
   body
@@ -22,10 +21,10 @@ html
         a(href='/login' class='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600') Login
         a(href='/register' class='border border-blue-500 text-blue-500 px-4 py-2 rounded hover:bg-blue-50') Register
 
-    // Hero Section
-    section.text-center.py-20.bg-white.shadow-inner
-      h1.text-4xl.font-bold.text-blue-700.mb-4 Outsource Craftsmen Confidently
-      p.text-gray-600.max-w-xl.mx-auto
+    // Hero Section with background image
+    section(class='hero text-center py-32')
+      h1(class='text-4xl md:text-5xl font-bold text-white mb-6') Outsource Craftsmen Confidently
+      p(class='text-white max-w-xl mx-auto text-lg')
         | CraftSmart connects employers with verified, rated craftsmen for construction and renovation jobs. Secure. Transparent. Efficient.
 
     // How It Works

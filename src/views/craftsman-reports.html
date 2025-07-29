@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Craftsman Report - Admin View</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .toggle-switch {
+      width: 50px;
+      height: 24px;
+      background: #ccc;
+      border-radius: 9999px;
+      position: relative;
+      cursor: pointer;
+    }
+    .toggle-switch::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.3s ease;
+    }
+    input:checked + .toggle-switch::before {
+      transform: translateX(26px);
+    }
+    input:checked + .toggle-switch {
+      background: #4F46E5;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800 transition-colors duration-300">
+  <div class="min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white p-4 border-r border-gray-200 shadow-sm overflow-y-auto">
+      <div class="text-2xl font-bold text-blue-600 mb-6">CraftSmart</div>
+      <nav class="space-y-4 text-sm">
+        <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-blue-600"><i data-feather="home"></i> Home</a>
+        <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-blue-600"><i data-feather="users"></i> Users</a>
+        <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-blue-600"><i data-feather="file"></i> Jobs</a>
+        <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-blue-600"><i data-feather="message-square"></i> Messages</a>
+        <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-blue-600"><i data-feather="alert-triangle"></i> Black List</a>
+        <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-blue-600"><i data-feather="activity"></i> Login Activity</a>
+        <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-blue-600"><i data-feather="bar-chart"></i> Financial</a>
+        <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-blue-600"><i data-feather="monitor"></i> Job Monitor</a>
+        <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-blue-600"><i data-feather="briefcase"></i> Projects</a>
+        <a href="#" class="flex items-center gap-2 text-red-600 hover:underline"><i data-feather="log-out"></i> Log Out</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 p-6 space-y-6">
+      <!-- Breadcrumb -->
+      <div class="text-sm text-gray-500">Reports > Users > Craftsmen</div>
+
+      <!-- Top Controls -->
+      <div class="flex justify-between items-center">
+        <input type="text" placeholder="Search..." class="w-full max-w-md px-4 py-2 border rounded shadow-sm bg-gray-50 focus:outline-none" />
+        <div class="flex items-center gap-4 ml-4">
+          <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow flex items-center gap-2">
+            <i data-feather="download"></i> Export to PDF
+          </button>
+          <i data-feather="bell" class="text-gray-600"></i>
+          <label class="flex items-center cursor-pointer">
+            <input type="checkbox" id="darkToggle" class="sr-only" onchange="document.body.classList.toggle('dark');">
+            <div class="toggle-switch"></div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Date and Stats -->
+      <div class="flex justify-between items-center text-sm text-gray-600">
+        <div class="flex items-center gap-2">
+          <i data-feather="calendar"></i>
+          Wednesday, 17 May 2021
+        </div>
+        <div class="flex gap-6">
+          <div>Skill: <strong>100</strong></div>
+          <div>Feedback: <strong>80</strong></div>
+          <div>Efficiency: <strong>60</strong></div>
+          <div>Message: <strong>40</strong></div>
+          <div>Reports: <strong>20</strong></div>
+        </div>
+      </div>
+
+      <!-- Profile Section -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Profile Picture -->
+        <div class="flex flex-col items-center space-y-4">
+          <img src="https://via.placeholder.com/150" alt="Profile Picture" class="w-40 h-40 rounded-full object-cover border shadow">
+          <div class="text-xl font-bold">John Marri <span class="text-sm text-gray-500">(He/Him)</span></div>
+          <div class="text-sm text-gray-700">Web Developer and Digital UI/UX Designer</div>
+          <div class="text-sm text-gray-500">Kampala, Uganda</div>
+          <div class="text-sm text-blue-600 underline cursor-pointer">Contact Info</div>
+          <div class="flex gap-2 flex-wrap">
+            <button class="bg-blue-500 text-white px-4 py-1 rounded">Message</button>
+            <button class="bg-red-500 text-white px-4 py-1 rounded">Add to Blacklist</button>
+            <button class="bg-gray-200 text-gray-800 px-4 py-1 rounded">Modify</button>
+            <button class="bg-gray-100 px-4 py-1 rounded border">More</button>
+          </div>
+          <div class="mt-4 text-sm">
+            <p><strong>Available to work:</strong> Yes</p>
+            <p><strong>Providing Services:</strong> Yes</p>
+            <p><strong>Safety:</strong> Good</p>
+            <p><strong>Communication:</strong> Excellent</p>
+            <p><strong>Experience:</strong> High</p>
+            <p><strong>Attitude:</strong> Professional</p>
+            <p><strong>Quality:</strong> Top-notch</p>
+          </div>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="md:col-span-2 space-y-4">
+          <div>
+            <h2 class="font-semibold">Profile</h2>
+            <p class="text-sm text-gray-600">Digital Designer, UI/UX Designer, Website Developer, Wordpress Developer roles</p>
+            <p class="text-sm text-gray-600">SEO Marketing, Website Optimization, Web Design, Wordpress</p>
+          </div>
+
+          <div>
+            <h2 class="font-semibold">About</h2>
+            <p class="text-sm text-gray-700">Pizza ipsum dolor meat lovers buffalo... mayo stuffed... etc.</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <h3 class="font-semibold text-sm">Email</h3>
+              <p class="text-sm text-gray-600">john12@gmail.com</p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-sm">Phone</h3>
+              <p class="text-sm text-gray-600">+256751293495</p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-sm">Birth Date</h3>
+              <p class="text-sm text-gray-600">Jun 16</p>
+            </div>
+            <div>
+              <h3 class="font-semibold text-sm">Address</h3>
+              <p class="text-sm text-gray-600">Kampala Central, Uganda</p>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="font-semibold">Top Skills</h2>
+            <p class="text-sm text-gray-600">Wordpress Development, Digital Design, UI/UX, WCAG, SEO</p>
+          </div>
+
+          <div>
+            <h2 class="font-semibold">Services</h2>
+            <p class="text-sm text-gray-600">Logo Design, Brand Design, Web Design, Web Development</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    feather.replace();
+  </script>
+</body>
+
+</html>

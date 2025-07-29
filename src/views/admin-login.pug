@@ -2,35 +2,24 @@ doctype html
 html
   head
     meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title Admin Login - CraftSmart
+    link(rel='stylesheet', href='/css/admin-login.css')
     script(src='https://cdn.tailwindcss.com')
   body
-    .bg-white.p-8.rounded.shadow-md.w-full.max-w-sm.mx-auto.mt-10
-      h2.text-2xl.font-bold.text-center.text-blue-600.mb-6 CraftSmart Admin Login
+    .login-container
+      h2 CraftSmart Admin Login
 
       if error
-        p.text-red-500.mb-4 #{error}
+        p.text-red-500 #{error}
 
       form#loginForm(method='POST', action='/admin-login')
         .mb-4
-          label.block.text-gray-700.mb-2(for='username') Username
-          input#username.w-full.p-2.border.border-gray-300.rounded(
-            type='text',
-            name='username',
-            required,
-            class='focus:outline-none focus:ring focus:border-blue-300'
-          )
+          label(for='username') Username
+          input#username(type='text', name='username', required)
         .mb-6
-          label.block.text-gray-700.mb-2(for='password') Password
-          input#password.w-full.p-2.border.border-gray-300.rounded(
-            type='password',
-            name='password',
-            required,
-            class='focus:outline-none focus:ring focus:border-blue-300'
-          )
-        button.w-full.bg-blue-600.text-white.py-2.rounded.transition(
-          type='submit',
-          class='hover:bg-blue-700'
-        ) Login
-    script(src='login.js')
+          label(for='password') Password
+          input#password(type='password', name='password', required)
+        button(type='submit') Login
+
+    script(src='/js/login.js')

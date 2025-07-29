@@ -10,6 +10,9 @@ const session = require('express-session');
 // Load environment variables
 dotenv.config();
 
+// Import Models
+const User = require('./models/user');
+
 // Import API routes
 const userRoutes = require('./routes/user.routes');
 const caseRoutes = require('./routes/case.routes');
@@ -19,9 +22,7 @@ const messageRoutes = require('./routes/message.routes');
 const craftsmanRoutes = require('./routes/craftsman.routes');
 const adminRoutes = require('./routes/admin.routes');
 const authRoutes = require('./routes/auth.routes');
-
-// ✅ Add dashboard route
-const dashboardRoutes = require('./routes/dashboard.routes'); 
+const dashboardRoutes = require('./routes/dashboard.routes');
 
 // Import middleware
 const { notFound, errorHandler } = require('./middlewares/error.middleware');
@@ -65,7 +66,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/', adminRoutes);
 
 // ✅ Use the dashboard route
-app.use('/dashboard', dashboardRoutes); 
+app.use('/dashboard', dashboardRoutes);
 
 // ===== API Routes =====
 app.use('/api/users', userRoutes);
@@ -76,11 +77,59 @@ app.use('/api/message', messageRoutes);
 app.use('/api/craftsmen', craftsmanRoutes);
 app.use('/', authRoutes);
 
-// ===== New /employer Route =====
+// ===== Registration Form Route (GET) =====
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
+app.get('/register', (req, res) => {
+  res.render('user-register', { title: 'User Registration' });
+});
+
+// ===== Registration Handling Route (POST) =====
+app.post('/register', async (req, res) => {
+  try {
+    // Remove empty email field so it doesn't trigger Mongoose validator
+    if (!req.body.email || req.body.email.trim() === '') {
+      delete req.body.email;
+    }
+
+    // Convert skills to array
+    if (typeof req.body.skills === 'string') {
+      req.body.skills = req.body.skills
+        .split(',')
+        .map((skill) => skill.trim())
+        .filter(Boolean);
+    }
+
+    // Combine location
+    const { region, district, city, ...rest } = req.body;
+    const location = { region, district, city };
+
+    const userData = {
+      ...rest,
+      location,
+    };
+
+    const newUser = new User(userData);
+    await newUser.save();
+
+    res.redirect('/login'); // Or wherever you want to go after registration
+  } catch (err) {
+    console.error('Registration Error:', err.message);
+    res.status(400).render('user-register', {
+      title: 'User Registration',
+      error: err.message,
+    });
+  }
+});
+
+// ===== Custom Routes for Dashboards =====
 app.get('/employer', (req, res) => {
   res.render('employer-dashboard', { title: 'Employer Dashboard' });
 });
-// ===== New /craftsman Route =====
+
 app.get('/craftsman', (req, res) => {
   res.render('craftsman-dashboard', { title: 'Craftsman Dashboard' });
 });

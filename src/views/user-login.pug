@@ -7,28 +7,27 @@ html
     link(rel='stylesheet', href='/css/user-login.css')
     script(src='https://cdn.tailwindcss.com')
   
-  body(style='background-color: #F8F9FC').flex.justify-center.items-center.h-screen
-    .bg-white.p-8.rounded.shadow-md.w-full.max-w-md
-      h2.text-2xl.font-bold.text-center.text-blue-600.mb-6 User Login
+  body
+    .login-container
+      h2 User Login
 
-      // Form Submission to /login using POST
       form(action='/login', method='POST')
         .mb-4
-          label.block.mb-2.text-gray-700(for='username') Username
-          input#username.w-full.p-2.border.rounded(type='text', name='username', required)
+          label(for='username') Username
+          input#username(type='text', name='username', required)
 
         .mb-4
-          label.block.mb-2.text-gray-700(for='password') Password
-          input#password.w-full.p-2.border.rounded(type='password', name='password', required)
+          label(for='password') Password
+          input#password(type='password', name='password', required)
 
         .mb-4
-          label.block.mb-2.text-gray-700(for='role') Login as:
-          select#role.w-full.p-2.border.rounded(name='role', required)
+          label(for='role') Login as:
+          select#role(name='role', required)
             option(value='') -- Select Role --
             option(value='employer') Employer
             option(value='craftsman') Craftsman
 
-        button.w-full.bg-blue-600.text-white.py-2.rounded(type='submit') Login
+        button(type='submit') Login
 
       if error
-        p.text-red-600.mt-4.text-center= error
+        p.text-red-500.mt-4.text-center #{error}

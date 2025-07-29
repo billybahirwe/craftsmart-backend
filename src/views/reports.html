@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftSmart - Reports</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800 transition-colors duration-300" id="body">
+  <!-- Layout Wrapper -->
+  <div class="min-h-screen flex">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white p-4 border-r border-gray-200 shadow-sm overflow-y-auto" id="sidebar">
+      <div class="text-2xl font-bold text-blue-600 mb-6">CraftSmart</div>
+      <nav class="space-y-2 text-sm">
+        <a href="#" class="flex items-center px-3 py-2 rounded bg-blue-100 font-semibold text-blue-600"><i
+            data-feather="home" class="w-4 h-4 mr-2"></i> Home</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="folder"
+            class="w-4 h-4 mr-2"></i> Projects</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="eye"
+            class="w-4 h-4 mr-2"></i> Job Monitor</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="message-circle"
+            class="w-4 h-4 mr-2"></i> Messages</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="file-text"
+            class="w-4 h-4 mr-2"></i> Reports</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="user-x"
+            class="w-4 h-4 mr-2"></i> Blacklist</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="bar-chart-2"
+            class="w-4 h-4 mr-2"></i> Analytics</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="settings"
+            class="w-4 h-4 mr-2"></i> Settings</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="help-circle"
+            class="w-4 h-4 mr-2"></i> Help Center</a>
+        <a href="#" class="flex items-center px-3 py-2 rounded hover:bg-blue-100"><i data-feather="mail"
+            class="w-4 h-4 mr-2"></i> Contact Us</a>
+        <a href="#" class="flex items-center px-3 py-2 text-red-600 rounded hover:bg-red-100"><i data-feather="log-out"
+            class="w-4 h-4 mr-2"></i> Log Out</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 space-y-6" id="main">
+
+      <!-- Top Bar -->
+      <div id="topbar" class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex justify-between items-center">
+        <div class="flex-1 flex justify-center">
+          <input type="text" placeholder="Search..."
+            class="w-full max-w-md px-4 py-2 border rounded shadow-sm bg-gray-50 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring focus:border-blue-300" />
+        </div>
+        <div class="flex items-center space-x-4">
+          <!-- Dark mode switch -->
+          <label class="toggle-switch relative flex items-center cursor-pointer">
+            <input type="checkbox" id="darkToggle" class="sr-only" onchange="toggleDarkMode(this)">
+            <div class="bg w-11 h-6 bg-gray-300 rounded-full relative">
+              <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full"></div>
+            </div>
+          </label>
+          <!-- Notification icon -->
+          <i data-feather="bell" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i>
+          <!-- Profile avatar -->
+          <div class="w-8 h-8 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- Calendar and PDF Button -->
+      <div class="flex justify-end items-center gap-4">
+        <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+          <i data-feather="calendar"></i>
+          <span>Wednesday, 17 May 2021</span>
+        </div>
+        <button class="flex items-center gap-2 bg-green-600 hover:bg-black-700 text-white px-4 py-2 rounded shadow">
+          <i data-feather="download"></i>
+          Export to PDF
+        </button>
+      </div>
+
+      <!-- User Reports Table -->
+      <div class="overflow-auto bg-white shadow rounded">
+        <table class="min-w-full text-sm text-left border">
+          <thead class="bg-white-600 text-black">
+            <tr>
+              <th class="px-4 py-2">Users</th>
+              <th class="px-4 py-2">Jobs</th>
+              <th class="px-4 py-2">Messages</th>
+              <th class="px-4 py-2">Black List</th>
+              <th class="px-4 py-2">Login Activity</th>
+              <th class="px-4 py-2">Financial</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <table class="min-w-full text-sm text-left border">
+        <thead class="bg-white-600 text-black">
+          <tr>
+            <th class="px-4 py-2">Project</th>
+            <th class="px-4 py-2">Start Date</th>
+            <th class="px-4 py-2">Craftsman</th>
+            <th class="px-4 py-2">Employer</th>
+            <th class="px-4 py-2">Status</th>
+            <th class="px-4 py-2">Reports</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700">
+          <tr class="border-t">
+            <td class="px-4 py-2">Fixing the Kitchen Sink</td>
+            <td class="px-4 py-2">Mon 9 Aug, 10:49 AM</td>
+            <td class="px-4 py-2">Karin</td>
+            <td class="px-4 py-2">William</td>
+            <td class="px-4 py-2 text-yellow-600">Pending</td>
+            <td class="px-4 py-2">karin@gmail.com</td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-4 py-2">Wall Painting</td>
+            <td class="px-4 py-2">Mon 9 Aug, 10:49 AM</td>
+            <td class="px-4 py-2">Shabrina</td>
+            <td class="px-4 py-2">Shabani</td>
+            <td class="px-4 py-2 text-green-600">Completed</td>
+            <td class="px-4 py-2">shabrina@gmail.com</td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-4 py-2">Work Work</td>
+            <td class="px-4 py-2">Mon 9 Aug, 10:49 AM</td>
+            <td class="px-4 py-2">Joel</td>
+            <td class="px-4 py-2">Matt</td>
+            <td class="px-4 py-2 text-yellow-600">On Hold</td>
+            <td class="px-4 py-2">joel@gmail.com</td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-4 py-2">Work Work</td>
+            <td class="px-4 py-2">Mon 9 Aug, 10:49 AM</td>
+            <td class="px-4 py-2">Joel</td>
+            <td class="px-4 py-2">Regern</td>
+            <td class="px-4 py-2 text-red-600">Not Started</td>
+            <td class="px-4 py-2">joel@gmail.com</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Footer -->
+      <div class="flex justify-between items-center mt-4 text-sm text-gray-600">
+        <span>Go to page</span>
+        <span>15 | 20 per page</span>
+        <span>Total: 4 entries</span>
+      </div>
+    </main>
+  </div>
+
+  <!-- Feather Icons + Dark Mode Script -->
+  <script>
+    feather.replace();
+
+    function toggleDarkMode(checkbox) {
+      const isDark = checkbox.checked;
+      const html = document.documentElement;
+      const body = document.getElementById('body');
+      const sidebar = document.getElementById('sidebar');
+      const topbar = document.getElementById('topbar');
+      const main = document.getElementById('main');
+
+      if (isDark) {
+        html.classList.add('dark');
+        body.className = 'bg-gray-900 text-white transition-colors duration-300';
+        sidebar.className = 'w-64 bg-gray-800 p-4 border-r border-gray-700 shadow-sm overflow-y-auto';
+        topbar.className = 'bg-gray-800 p-4 rounded shadow flex justify-between items-center';
+        main.className = 'flex-1 p-6 space-y-6';
+      } else {
+        html.classList.remove('dark');
+        body.className = 'bg-white text-gray-800 transition-colors duration-300';
+        sidebar.className = 'w-64 bg-white p-4 border-r border-gray-200 shadow-sm overflow-y-auto';
+        topbar.className = 'bg-white p-4 rounded shadow flex justify-between items-center';
+        main.className = 'flex-1 p-6 space-y-6';
+      }
+    }
+  </script>
+</body>
+
+</html>

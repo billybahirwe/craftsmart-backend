@@ -48,15 +48,32 @@ nav .hover\:text-blue-500:hover {
   color: #5A5F78;
 }
 
-/* HERO SECTION */
+/* HERO SECTION WITH BACKGROUND IMAGE */
 section.hero {
-  background-color: #ffffff;
+  background: url('/img/craft-backg.jpg') no-repeat center center;
+  background-size: cover;
   text-align: center;
   padding: 6rem 1rem;
+  color: white;
+  position: relative;
+}
+
+section.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Optional dark overlay */
+  z-index: 0;
+}
+
+section.hero h1,
+section.hero p {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
-  color: #5A5F78;
+  color: #ffffff;
   font-size: 2.75rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -66,7 +83,7 @@ section.hero {
   font-size: 1.125rem;
   max-width: 640px;
   margin: 0 auto;
-  color: #7E7E7E;
+  color: #e6e6e6;
 }
 
 /* SECTIONS HEADERS */
@@ -98,7 +115,6 @@ section h2 {
   max-width: 700px;
   margin: 0 auto;
 }
-
 
 /* INFO CARDS */
 .card, .grid > div {

@@ -1,0 +1,89 @@
+/* ADMIN LOGIN PAGE BACKGROUND */
+body {
+  background: url('/img/craft-backg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #7E7E7E;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* DARK OVERLAY FOR BACKGROUND */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+/* LOGIN CARD CONTAINER */
+.login-container {
+  position: relative;
+  z-index: 1;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 6rem auto;
+}
+
+/* LOGIN HEADER */
+.login-container h2 {
+  color: #777E9C;
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* FORM INPUT STYLING */
+.login-container input {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.login-container input:focus {
+  border-color: #777E9C;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(119, 126, 156, 0.2);
+}
+
+/* LABELS */
+.login-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #5A5F78;
+}
+
+/* ERROR MESSAGE */
+.login-container p.text-red-500 {
+  color: #e74c3c;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* LOGIN BUTTON */
+.login-container button {
+  background-color: #777E9C;
+  color: white;
+  padding: 0.65rem;
+  width: 100%;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+  background-color: #5A5F78;
+}

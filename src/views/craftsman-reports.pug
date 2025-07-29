@@ -1,0 +1,179 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Craftsman Report - Admin View
+  script(src='https://cdn.tailwindcss.com')
+  script(src='https://unpkg.com/feather-icons')
+  style.
+    body {
+    font-family: 'Inter', sans-serif;
+    }
+    .toggle-switch {
+    width: 50px;
+    height: 24px;
+    background: #ccc;
+    border-radius: 9999px;
+    position: relative;
+    cursor: pointer;
+    }
+    .toggle-switch::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease;
+    }
+    input:checked + .toggle-switch::before {
+    transform: translateX(26px);
+    }
+    input:checked + .toggle-switch {
+    background: #4F46E5;
+    }
+.min-h-screen.flex
+
+          body#body(class='bg-white text-gray-800')
+    .min-h-screen.flex
+      // Sidebar
+      aside#sidebar(class='w-64 bg-white p-4 border-r border-gray-200 shadow-sm overflow-y-auto')
+        .text-2xl.font-bold.text-blue-600.mb-6 CraftSmart
+        nav(class='space-y-2 text-sm')
+          a(href='/dashboard' class='flex items-center px-3 py-2 rounded bg-blue-100 font-semibold text-blue-600')
+            i(data-feather='home' class='w-4 h-4 mr-2')
+            | Home
+          a(href='/dashboard/monitor' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
+            i(data-feather='eye' class='w-4 h-4 mr-2')
+            | Job Monitor
+          a(href='/dashboard/projects' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
+            i(data-feather='folder' class='w-4 h-4 mr-2')
+            | Projects
+          a(href='/dashboard/messages' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
+            i(data-feather='message-circle' class='w-4 h-4 mr-2')
+            | Messages
+          a(href='/dashboard/reports' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
+            i(data-feather='file-text' class='w-4 h-4 mr-2')
+            | Reports
+          a(href='/dashboard/blacklist' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
+            i(data-feather='user-x' class='w-4 h-4 mr-2')
+            | Black list
+          a(href='/dashboard/analytics' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
+            i(data-feather='bar-chart-2' class='w-4 h-4 mr-2')
+            | Analytics
+          a(href='/dashboard/help' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
+            i(data-feather='help-circle' class='w-4 h-4 mr-2')
+            | Help center
+          a(href='/dashboard/contact' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
+            i(data-feather='mail' class='w-4 h-4 mr-2')
+            | Contact us
+          a(href='/logout' class='flex items-center px-3 py-2 text-red-600 rounded hover:bg-red-100')
+            i(data-feather='log-out' class='w-4 h-4 mr-2')
+            | Log Out
+        
+  // Main
+  main.flex-1.p-6.space-y-6
+    // Breadcrumb
+    .text-sm.text-gray-500 Reports &gt; Users &gt; Craftsmen
+    // Top Controls
+    .flex.justify-between.items-center
+      input.w-full.max-w-md.px-4.py-2.border.rounded.shadow-sm.bg-gray-50(type='text' placeholder='Search...' class='focus:outline-none')
+      .flex.items-center.gap-4.ml-4
+        button.bg-blue-600.text-white.px-4.py-2.rounded.shadow.flex.items-center.gap-2(class='hover:bg-blue-700')
+          i(data-feather='download')
+          |  Export to PDF
+        i.text-gray-600(data-feather='bell')
+        label.flex.items-center.cursor-pointer
+          input#darkToggle.sr-only(type='checkbox' onchange="document.body.classList.toggle('dark');")
+          .toggle-switch
+    // Date and Stats
+    .flex.justify-between.items-center.text-sm.text-gray-600
+      .flex.items-center.gap-2
+        i(data-feather='calendar')
+        |           Wednesday, 17 May 2021
+      .flex.gap-6
+        div
+          | Skill: 
+          strong 100
+        div
+          | Feedback: 
+          strong 80
+        div
+          | Efficiency: 
+          strong 60
+        div
+          | Message: 
+          strong 40
+        div
+          | Reports: 
+          strong 20
+    // Profile Section
+    .grid.grid-cols-1.gap-6(class='md:grid-cols-3')
+      // Profile Picture
+      .flex.flex-col.items-center.space-y-4
+        img.w-40.h-40.rounded-full.object-cover.border.shadow(src='https://via.placeholder.com/150' alt='Profile Picture')
+        .text-xl.font-bold
+          | John Marri 
+          span.text-sm.text-gray-500 (He/Him)
+        .text-sm.text-gray-700 Web Developer and Digital UI/UX Designer
+        .text-sm.text-gray-500 Kampala, Uganda
+        .text-sm.text-blue-600.underline.cursor-pointer Contact Info
+        .flex.gap-2.flex-wrap
+          button.bg-blue-500.text-white.px-4.py-1.rounded Message
+          button.bg-red-500.text-white.px-4.py-1.rounded Add to Blacklist
+          button.bg-gray-200.text-gray-800.px-4.py-1.rounded Modify
+          button.bg-gray-100.px-4.py-1.rounded.border More
+        .mt-4.text-sm
+          p
+            strong Available to work:
+            |  Yes
+          p
+            strong Providing Services:
+            |  Yes
+          p
+            strong Safety:
+            |  Good
+          p
+            strong Communication:
+            |  Excellent
+          p
+            strong Experience:
+            |  High
+          p
+            strong Attitude:
+            |  Professional
+          p
+            strong Quality:
+            |  Top-notch
+      // Profile Details
+      .space-y-4(class='md:col-span-2')
+        div
+          h2.font-semibold Profile
+          p.text-sm.text-gray-600 Digital Designer, UI/UX Designer, Website Developer, Wordpress Developer roles
+          p.text-sm.text-gray-600 SEO Marketing, Website Optimization, Web Design, Wordpress
+        div
+          h2.font-semibold About
+          p.text-sm.text-gray-700 Pizza ipsum dolor meat lovers buffalo... mayo stuffed... etc.
+        .grid.grid-cols-2.gap-4
+          div
+            h3.font-semibold.text-sm Email
+            p.text-sm.text-gray-600 john12@gmail.com
+          div
+            h3.font-semibold.text-sm Phone
+            p.text-sm.text-gray-600 +256751293495
+          div
+            h3.font-semibold.text-sm Birth Date
+            p.text-sm.text-gray-600 Jun 16
+          div
+            h3.font-semibold.text-sm Address
+            p.text-sm.text-gray-600 Kampala Central, Uganda
+        div
+          h2.font-semibold Top Skills
+          p.text-sm.text-gray-600 Wordpress Development, Digital Design, UI/UX, WCAG, SEO
+        div
+          h2.font-semibold Services
+          p.text-sm.text-gray-600 Logo Design, Brand Design, Web Design, Web Development
+script.
+  feather.replace();
