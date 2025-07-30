@@ -1,124 +1,130 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Messages - CraftSmart
-  script(src='https://cdn.tailwindcss.com')
-  script(src='https://unpkg.com/feather-icons')
-  script.
-    tailwind.config = {
-    darkMode: 'class',
-    }
-  style.
-    .toggle-switch {
-    transition: background-color 0.3s;
-    }
-    .toggle-switch .dot {
-    transition: transform 0.3s;
-    }
-    .toggle-switch input:checked ~ .bg {
-    background-color: #4f46e5; /* indigo-600 */
-    }
-    .toggle-switch input:checked ~ .bg .dot {
-    transform: translateX(20px);
-    }
-.min-h-screen.flex
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Messages - CraftSmart
 
-  body#body(class='bg-white text-gray-800')
+    // Tailwind & Feather Icons
+    script(src='https://cdn.tailwindcss.com')
+    script(src='https://unpkg.com/feather-icons')
+
+    // Tailwind config
+    script.
+      tailwind.config = {
+        darkMode: 'class',
+      }
+
+    style.
+      .toggle-switch {
+        transition: background-color 0.3s;
+      }
+      .toggle-switch .dot {
+        transition: transform 0.3s;
+      }
+      .toggle-switch input:checked ~ .bg {
+        background-color: #4f46e5;
+      }
+      .toggle-switch input:checked ~ .bg .dot {
+        transform: translateX(20px);
+      }
+
+  body#body(class="bg-white text-gray-800")
     .min-h-screen.flex
       // Sidebar
-      aside#sidebar(class='w-64 bg-white p-4 border-r border-gray-200 shadow-sm overflow-y-auto')
+      aside#sidebar(class="w-64 bg-white p-4 border-r border-gray-200 shadow-sm overflow-y-auto")
         .text-2xl.font-bold.text-blue-600.mb-6 CraftSmart
-        nav(class='space-y-2 text-sm')
-          a(href='/dashboard' class='flex items-center px-3 py-2 rounded bg-blue-100 font-semibold text-blue-600')
-            i(data-feather='home' class='w-4 h-4 mr-2')
+        nav(class="space-y-2 text-sm")
+          a(href='/dashboard', class="flex items-center px-3 py-2 rounded bg-blue-100 font-semibold text-blue-600")
+            i(data-feather='home', class="w-4 h-4 mr-2")
             | Home
-          a(href='/dashboard/monitor' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
-            i(data-feather='eye' class='w-4 h-4 mr-2')
+          a(href='/dashboard/monitor', class="flex items-center px-3 py-2 rounded hover:bg-blue-100")
+            i(data-feather='eye', class="w-4 h-4 mr-2")
             | Job Monitor
-          a(href='/dashboard/projects' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
-            i(data-feather='folder' class='w-4 h-4 mr-2')
+          a(href='/dashboard/projects', class="flex items-center px-3 py-2 rounded hover:bg-blue-100")
+            i(data-feather='folder', class="w-4 h-4 mr-2")
             | Projects
-          a(href='/dashboard/messages' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
-            i(data-feather='message-circle' class='w-4 h-4 mr-2')
+          a(href='/dashboard/messages', class="flex items-center px-3 py-2 rounded hover:bg-blue-100")
+            i(data-feather='message-circle', class="w-4 h-4 mr-2")
             | Messages
-          a(href='/dashboard/reports' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
-            i(data-feather='file-text' class='w-4 h-4 mr-2')
+          a(href='/dashboard/reports', class="flex items-center px-3 py-2 rounded hover:bg-blue-100")
+            i(data-feather='file-text', class="w-4 h-4 mr-2")
             | Reports
-          a(href='/dashboard/blacklist' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
-            i(data-feather='user-x' class='w-4 h-4 mr-2')
+          a(href='/dashboard/blacklist', class="flex items-center px-3 py-2 rounded hover:bg-blue-100")
+            i(data-feather='user-x', class="w-4 h-4 mr-2")
             | Black list
-          a(href='/dashboard/analytics' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
-            i(data-feather='bar-chart-2' class='w-4 h-4 mr-2')
+          a(href='/dashboard/analytics', class="flex items-center px-3 py-2 rounded hover:bg-blue-100")
+            i(data-feather='bar-chart-2', class="w-4 h-4 mr-2")
             | Analytics
-          a(href='/dashboard/help' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
-            i(data-feather='help-circle' class='w-4 h-4 mr-2')
+          a(href='/dashboard/help', class="flex items-center px-3 py-2 rounded hover:bg-blue-100")
+            i(data-feather='help-circle', class="w-4 h-4 mr-2")
             | Help center
-          a(href='/dashboard/contact' class='flex items-center px-3 py-2 rounded hover:bg-blue-100')
-            i(data-feather='mail' class='w-4 h-4 mr-2')
+          a(href='/dashboard/contact', class="flex items-center px-3 py-2 rounded hover:bg-blue-100")
+            i(data-feather='mail', class="w-4 h-4 mr-2")
             | Contact us
-          a(href='/logout' class='flex items-center px-3 py-2 text-red-600 rounded hover:bg-red-100')
-            i(data-feather='log-out' class='w-4 h-4 mr-2')
+          a(href='/logout', class="flex items-center px-3 py-2 text-red-600 rounded hover:bg-red-100")
+            i(data-feather='log-out', class="w-4 h-4 mr-2")
             | Log Out
-        
-  // Main Content
-  main.flex-1.p-6.space-y-6
-    // Top Bar
-    .bg-white.p-4.rounded-lg.shadow.flex.justify-between.items-center(class='dark:bg-gray-800')
-      .flex-1.flex.justify-center
-        input.w-full.max-w-md.px-4.py-2.border.rounded.shadow-sm.bg-gray-50(type='text' placeholder='Search...' class='dark:bg-gray-700 dark:text-white focus:outline-none focus:ring focus:border-blue-300')
-      .flex.items-center.space-x-4
-        // Dark mode switch
-        label.toggle-switch.relative.flex.items-center.cursor-pointer
-          input#darkToggle.sr-only(type='checkbox' onchange='toggleDarkMode(this)')
-          .bg.w-11.h-6.bg-gray-300.rounded-full.relative
-            .dot.absolute.left-1.top-1.bg-white.w-4.h-4.rounded-full
-        // Notification icon
-        i.w-5.h-5.text-gray-600(data-feather='bell' class='dark:text-gray-300')
-        // Profile avatar
-        .w-8.h-8.bg-gray-300.rounded-full(class='dark:bg-gray-600')
-    // Chat Area
-    .flex-1.overflow-y-auto.bg-white.rounded-lg.p-6.space-y-6.shadow(class='dark:bg-gray-800')
-      div
-        p.text-sm.text-gray-500(class='dark:text-gray-400') Anil &bull; 9:52pm
-        .bg-blue-100.p-3.rounded-lg.inline-block(class='dark:bg-blue-900') April fool&rsquo;s day
-        p.text-xs.text-gray-400.mt-1 Online - Last seen, 2:02pm
-      div
-        p.text-sm.text-gray-500(class='dark:text-gray-400') Angel Lubin &bull; 11:22pm
-        .bg-gray-100.p-3.rounded-lg.inline-block(class='dark:bg-gray-700') Hey There!
-      div
-        p.text-sm.text-gray-500(class='dark:text-gray-400') Kaiya Levin &bull; 11:22pm
-        .bg-gray-100.p-3.rounded-lg.inline-block(class='dark:bg-gray-700') Have you seen Jane&rsquo;s new dog???????
-      div
-        p.text-sm.text-gray-500(class='dark:text-gray-400') Phillip Aminoff &bull; 11:22pm
-        .bg-gray-100.p-3.rounded-lg.inline-block(class='dark:bg-gray-700') How are you? I know! Where is the time going?!
-        p.text-xs.text-gray-400.mt-1 Today, 8:30pm
-      div
-        p.text-sm.text-gray-500(class='dark:text-gray-400') Maria Carder &bull; 11:22pm
-        .bg-gray-100.p-3.rounded-lg.inline-block(class='dark:bg-gray-700') Too freaking cute!!! I love puppies!
-        p.text-xs.text-gray-400.mt-1 Today, 8:33pm
-      div
-        p.text-sm.text-gray-500(class='dark:text-gray-400') Haylie Schleifer &bull; 11:22pm
-        .bg-gray-100.p-3.rounded-lg.inline-block(class='dark:bg-gray-700') Sounds good. I am fine and how are you?
-        p.text-xs.text-gray-400.mt-1 Today, 8:34pm
-      .text-right
-        p.text-sm.text-gray-500(class='dark:text-gray-400') You
-        .bg-blue-600.text-white.p-3.rounded-lg.inline-block Yes sure!
-        p.text-xs.text-gray-400.mt-1 Today, 8:58pm
-    // Message Input
-    .mt-4.flex.items-center.bg-white.p-4.rounded-lg.shadow(class='dark:bg-gray-800')
-      input.flex-1.px-4.py-2.border.rounded.bg-gray-50.text-gray-900(type='text' placeholder='Type your message here...' class='dark:bg-gray-700 dark:text-white focus:outline-none')
-      button.ml-4.bg-blue-600.text-white.px-4.py-2.rounded(class='hover:bg-blue-700') Send
-script.
-  feather.replace();
-  // Toggle dark mode with switch
-  function toggleDarkMode(checkbox) {
-  document.documentElement.classList.toggle('dark', checkbox.checked);
-  }
-  // Set switch state on load if dark mode is on
-  window.addEventListener('DOMContentLoaded', () => {
-  const checkbox = document.getElementById('darkToggle');
-  if (document.documentElement.classList.contains('dark')) {
-  checkbox.checked = true;
-  }
-  });
+
+      // Main Content
+      main.flex-1.p-6.space-y-6
+        // Top Bar
+        .bg-white.p-4.rounded-lg.shadow.flex.justify-between.items-center(class="dark:bg-gray-800")
+          .flex-1.flex.justify-center
+            input.w-full.max-w-md.px-4.py-2.border.rounded.shadow-sm.bg-gray-50(
+              type="text",
+              placeholder="Search...",
+              class="dark:bg-gray-700 dark:text-white focus:outline-none focus:ring focus:border-blue-300"
+            )
+          .flex.items-center.space-x-4
+            // Dark mode toggle
+            label.toggle-switch.relative.flex.items-center.cursor-pointer
+              input#darkToggle.sr-only(type="checkbox")
+              .bg.w-11.h-6.bg-gray-300.rounded-full.relative
+                .dot.absolute.left-1.top-1.bg-white.w-4.h-4.rounded-full
+            i.w-5.h-5.text-gray-600(data-feather="bell", class="dark:text-gray-300")
+            .w-8.h-8.bg-gray-300.rounded-full(class="dark:bg-gray-600")
+
+        // Chat messages
+        .flex-1.overflow-y-auto.bg-white.rounded-lg.p-6.space-y-6.shadow(class="dark:bg-gray-800")
+          div
+            p.text-sm.text-gray-500(class="dark:text-gray-400") Anil • 9:52pm
+            .bg-blue-100.p-3.rounded-lg.inline-block(class="dark:bg-blue-900") April fool’s day
+            p.text-xs.text-gray-400.mt-1 Online - Last seen, 2:02pm
+          div
+            p.text-sm.text-gray-500(class="dark:text-gray-400") Angel Lubin • 11:22pm
+            .bg-gray-100.p-3.rounded-lg.inline-block(class="dark:bg-gray-700") Hey There!
+          div
+            p.text-sm.text-gray-500(class="dark:text-gray-400") Kaiya Levin • 11:22pm
+            .bg-gray-100.p-3.rounded-lg.inline-block(class="dark:bg-gray-700") Have you seen Jane’s new dog???????
+          div
+            p.text-sm.text-gray-500(class="dark:text-gray-400") Phillip Aminoff • 11:22pm
+            .bg-gray-100.p-3.rounded-lg.inline-block(class="dark:bg-gray-700") How are you? I know! Where is the time going?!
+            p.text-xs.text-gray-400.mt-1 Today, 8:30pm
+          div
+            p.text-sm.text-gray-500(class="dark:text-gray-400") Maria Carder • 11:22pm
+            .bg-gray-100.p-3.rounded-lg.inline-block(class="dark:bg-gray-700") Too freaking cute!!! I love puppies!
+            p.text-xs.text-gray-400.mt-1 Today, 8:33pm
+          div
+            p.text-sm.text-gray-500(class="dark:text-gray-400") Haylie Schleifer • 11:22pm
+            .bg-gray-100.p-3.rounded-lg.inline-block(class="dark:bg-gray-700") Sounds good. I am fine and how are you?
+            p.text-xs.text-gray-400.mt-1 Today, 8:34pm
+          .text-right
+            p.text-sm.text-gray-500(class="dark:text-gray-400") You
+            .bg-blue-600.text-white.p-3.rounded-lg.inline-block Yes sure!
+            p.text-xs.text-gray-400.mt-1 Today, 8:58pm
+
+        // Input
+        .mt-4.flex.items-center.bg-white.p-4.rounded-lg.shadow(class="dark:bg-gray-800")
+          input.flex-1.px-4.py-2.border.rounded.bg-gray-50.text-gray-900(
+            type="text",
+            placeholder="Type your message here...",
+            class="dark:bg-gray-700 dark:text-white focus:outline-none"
+          )
+          button.ml-4.bg-blue-600.text-white.px-4.py-2.rounded(class="hover:bg-blue-700") Send
+
+    // External Scripts (placed at bottom)
+    script.
+      feather.replace();
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js")
+    script(src="/js/messages.js")

@@ -66,8 +66,7 @@ html
           .flex.items-center.gap-2.text-gray-700
             i(data-feather='calendar')
             span Wednesday, 17 May 2021
-          button(class='flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-700')
-
+          button#exportPDF(class='flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-700')
             i(data-feather='download')
             | Export to PDF
 
@@ -140,6 +139,7 @@ html
           span 15 | 20 per page
           span Total: 4 entries
 
+    // Feather icons + Dark mode toggle script
     script.
       feather.replace();
       function toggleDarkMode(checkbox) {
@@ -163,3 +163,6 @@ html
           main.className = 'flex-1 p-6 space-y-6';
         }
       }
+
+    // ✅ External reports.js linked
+    script(src='/js/reports.js')
