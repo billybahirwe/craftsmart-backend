@@ -1,5 +1,6 @@
 /* USER LOGIN PAGE STYLES */
 
+/* GLOBAL STYLES */
 body {
   background: url('/img/craft-backg.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -13,32 +14,39 @@ body {
   justify-content: center;
   align-items: center;
 }
-body {
-  background-color: #F8F9FC;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #7E7E7E;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+
+/* Background overlay for readability */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(248, 249, 252, 0.95);
+  z-index: 0;
 }
 
+/* LOGIN CONTAINER */
 .login-container {
+  position: relative;
+  z-index: 1;
   background-color: #ffffff;
   padding: 2.5rem 2rem;
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  width: 100%;
+  width: 90%;
   max-width: 400px;
+  box-sizing: border-box;
 }
 
+/* HEADER */
 .login-container h2 {
   color: #5A5F78;
   margin-bottom: 1.5rem;
   text-align: center;
+  font-size: 1.75rem;
+  word-break: break-word;
 }
 
+/* FORM STYLES */
 .login-container form {
   display: flex;
   flex-direction: column;
@@ -47,16 +55,41 @@ body {
 .login-container label {
   margin-bottom: 0.5rem;
   font-weight: 500;
+  color: #5A5F78;
 }
 
-.login-container input {
+.login-container input,
+.login-container select {
   padding: 0.75rem;
   margin-bottom: 1.25rem;
   border: 1px solid #ccc;
   border-radius: 0.375rem;
   font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #5A5F78;
 }
 
+.login-container input:focus,
+.login-container select:focus {
+  border-color: #777E9C;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(119, 126, 156, 0.2);
+}
+
+/* SELECT STYLES */
+.login-container select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.login-container select option {
+  background-color: #fff;
+  color: #5A5F78;
+}
+
+/* BUTTON STYLES */
 .login-container button {
   background-color: #777E9C;
   color: #fff;
@@ -64,6 +97,7 @@ body {
   border: none;
   border-radius: 0.375rem;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -72,6 +106,7 @@ body {
   background-color: #5A5F78;
 }
 
+/* FOOTER TEXT */
 .login-container p {
   text-align: center;
   font-size: 0.9rem;
@@ -87,25 +122,26 @@ body {
   text-decoration: underline;
 }
 
-.login-container select {
-  padding: 0.75rem;
-  margin-bottom: 1.25rem;
-  border: 1px solid #ccc;
-  border-radius: 0.375rem;
-  font-size: 1rem;
-  background-color: #fff;
-  color: #5A5F78;
-  appearance: none; /* Removes default arrow in some browsers */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-.login-container select option {
-  background-color: #fff; /* dropdown background */
-  color: #5A5F78;         /* text color */
-}
+/* RESPONSIVE FIXES FOR SMALL DEVICES */
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
 
-.login-container select:focus {
-  outline: none;
-  border-color: #777E9C;
-  box-shadow: 0 0 0 2px rgba(119, 126, 156, 0.2);
+  .login-container {
+    padding: 2rem 1.5rem;
+    border-radius: 0.5rem;
+  }
+
+  .login-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .login-container input,
+  .login-container select,
+  .login-container button {
+    font-size: 0.95rem;
+    padding: 0.65rem;
+  }
 }

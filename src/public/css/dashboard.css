@@ -2,10 +2,15 @@
 body {
   font-family: 'Inter', sans-serif;
   background-color: #F8F9FC;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* ========== Sidebar Scrollbar ========== */
 aside {
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #cbd5e0 transparent;
 }
@@ -20,6 +25,11 @@ aside::-webkit-scrollbar-thumb {
 /* ========== Sidebar Links ========== */
 aside nav a {
   color: #777E9C;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
   transition: background-color 0.2s, color 0.2s;
 }
 aside nav a:hover {
@@ -44,14 +54,20 @@ aside nav a.text-red-600:hover {
 /* Sidebar Icons */
 aside i {
   color: #777E9C;
+  font-size: 1rem;
 }
 aside a:hover i {
   color: #777E9C;
 }
 
-/* ========== Top Bar ========== */
+/* ========== Top Bar Input ========== */
 input[type="text"] {
   background-color: #F5F6F9;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ========== Toggle Switch ========== */
@@ -70,6 +86,8 @@ input[type="text"] {
   background-color: #d1d5db;
   border-radius: 9999px;
   transition: background-color 0.3s;
+  width: 100%;
+  height: 100%;
 }
 .toggle-switch .dot {
   position: absolute;
@@ -100,13 +118,11 @@ main .grid-cols-3 div i {
 /* ========== Calendar ========== */
 .grid.grid-cols-7 > div {
   color: #000000;
+  padding: 6px 0;
 }
 .grid.grid-cols-7 > div:nth-child(-n+7) {
   background-color: #E5E5E5;
   color: #000000;
-}
-.calendar-grid div {
-  padding: 6px 0;
 }
 
 /* ========== Transitions & Misc ========== */
@@ -118,6 +134,29 @@ main .grid-cols-3 div i {
 }
 .rounded {
   border-radius: 0.5rem;
+}
+
+/* ========== Responsive Grid Helpers ========== */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid-cols-6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+@media (max-width: 1024px) {
+  .grid-cols-6 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .grid-cols-6,
+  .grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ========== Dark Mode ========== */
@@ -141,4 +180,32 @@ main .grid-cols-3 div i {
 }
 .dark .bg-white {
   background-color: #1f2937 !important;
+}
+
+/* ========== Mobile Responsiveness ========== */
+@media (max-width: 640px) {
+  aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    max-width: 280px;
+    height: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  aside.open {
+    transform: translateX(0);
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .toggle-switch {
+    transform: scale(0.9);
+  }
 }

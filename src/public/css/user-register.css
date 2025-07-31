@@ -13,6 +13,7 @@ body {
   align-items: center;
 }
 
+/* Background Overlay */
 body::before {
   content: "";
   position: absolute;
@@ -29,8 +30,9 @@ body::before {
   padding: 2rem;
   border-radius: 0.75rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  width: 90%;
   max-width: 500px;
-  width: 100%;
+  box-sizing: border-box;
 }
 
 /* HEADER */
@@ -40,6 +42,7 @@ body::before {
   font-weight: 700;
   text-align: center;
   margin-bottom: 1.5rem;
+  word-break: break-word;
 }
 
 /* FORM ELEMENTS */
@@ -60,6 +63,7 @@ body::before {
   font-size: 1rem;
   margin-bottom: 1rem;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 .register-container input:focus,
@@ -81,8 +85,38 @@ body::before {
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 1rem;
 }
 
 .register-container button:hover {
   background-color: #5A5F78;
+}
+
+/* RESPONSIVE DESIGN FOR SMALL SCREENS */
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+
+  .register-container {
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+  }
+
+  .register-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .register-container input,
+  .register-container select,
+  .register-container textarea {
+    font-size: 0.95rem;
+    padding: 0.5rem;
+  }
+
+  .register-container button {
+    font-size: 0.95rem;
+    padding: 0.6rem;
+  }
 }

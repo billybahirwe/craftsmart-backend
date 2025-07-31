@@ -12,6 +12,7 @@ body {
 nav {
   background-color: #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
 }
 
 nav .text-blue-600 {
@@ -22,6 +23,7 @@ nav a {
   color: #7E7E7E;
   font-weight: 500;
   transition: color 0.3s ease;
+  text-decoration: none;
 }
 
 nav a:hover {
@@ -62,7 +64,7 @@ section.hero::after {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4); /* Optional dark overlay */
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
@@ -73,22 +75,21 @@ section.hero p {
 }
 
 .hero h1 {
-  color: #ffffff;
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
 .hero p {
-  font-size: 1.125rem;
-  max-width: 640px;
+  font-size: 1.1rem;
+  max-width: 90%;
   margin: 0 auto;
   color: #e6e6e6;
 }
 
-/* SECTIONS HEADERS */
+/* SECTION HEADERS */
 section h2 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: #5A5F78;
   margin-bottom: 2rem;
   font-weight: 600;
@@ -103,16 +104,15 @@ section h2 {
 }
 
 #blacklist h2 {
-  color: #A94442; /* Softer red, not bright */
-  font-size: 2rem;
+  color: #A94442;
+  font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
 }
 
 #blacklist p {
-  color: #7E7E7E;
   font-size: 1rem;
-  max-width: 700px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -148,6 +148,7 @@ button {
   transition: background-color 0.3s ease;
   border: none;
   cursor: pointer;
+  display: inline-block;
 }
 
 a.button:hover,
@@ -180,6 +181,8 @@ section.white {
 #contact {
   background-color: #777E9C;
   color: #ffffff;
+  padding: 3rem 1rem;
+  text-align: center;
 }
 
 #contact a {
@@ -203,11 +206,43 @@ footer {
 /* GRID SYSTEM */
 .grid {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
+  margin: 2rem 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 600px) {
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
   .grid-cols-3 {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* RESPONSIVE TYPOGRAPHY */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  section h2 {
+    font-size: 1.5rem;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+
+  a.button, button {
+    width: 100%;
+    padding: 0.8rem 1rem;
   }
 }
