@@ -1,0 +1,43 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title CraftSmart - Public Blacklist
+  link(rel='stylesheet' href='/css/home.css')
+  script(src='https://cdn.tailwindcss.com')
+// Navigation
+nav.bg-white.shadow.p-4.flex.justify-between.items-center
+  a.text-2xl.font-bold.text-blue-600(href='/') CraftSmart
+  .space-x-6.hidden(class='md:flex')
+    a(href='/' class='hover:text-blue-500') Home
+    a.font-semibold(href='/public-blacklist' class='hover:text-blue-500') Blacklist
+    a.font-semibold(href='/admin-login' class='hover:text-blue-500') Admin Login
+  .space-x-2
+    a.bg-blue-500.text-white.px-4.py-2.rounded(href='/login' class='hover:bg-blue-600') Login
+    a.border.border-blue-500.text-blue-500.px-4.py-2.rounded(href='/register' class='hover:bg-blue-50') Register
+// Blacklist Content
+section.py-16.px-6.max-w-4xl.mx-auto
+  h1.text-3xl.font-semibold.text-center.text-red-600.mb-10 Public Blacklist
+  p.text-gray-700.mb-6.text-center.max-w-2xl.mx-auto
+    | Below is a list of users who have been reported and verified for serious misconduct or fraud.
+    | This page exists to promote accountability and safety within the CraftSmart platform.
+  // Example blacklist table
+  .overflow-x-auto
+    table.min-w-full.bg-white.border.border-gray-200.rounded.shadow
+      thead.bg-gray-100.text-left
+        tr
+          th.py-3.px-4.border-b Name
+          th.py-3.px-4.border-b Violation
+          th.py-3.px-4.border-b Date Blacklisted
+      tbody
+        tr
+          td.py-2.px-4.border-b John Doe
+          td.py-2.px-4.border-b Fraudulent billing
+          td.py-2.px-4.border-b 2025-04-10
+        tr
+          td.py-2.px-4.border-b Jane Smith
+          td.py-2.px-4.border-b Unfinished projects
+          td.py-2.px-4.border-b 2025-06-21
+// Footer
+footer.text-center.py-4.bg-gray-200.text-sm.text-gray-600
+  | &copy; 2025 CraftSmart. All rights reserved.

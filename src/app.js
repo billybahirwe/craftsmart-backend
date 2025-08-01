@@ -134,6 +134,11 @@ app.get('/craftsman', (req, res) => {
   res.render('craftsman-dashboard', { title: 'Craftsman Dashboard' });
 });
 
+app.get('/public-blacklist', (req, res) => {
+  res.render('public-blacklist');
+});
+
+
 // ===== Error Handling (MUST be last) =====
 app.use(notFound);
 app.use(errorHandler);
@@ -153,10 +158,7 @@ io.on('connection', (socket) => {
 
 // ===== MongoDB Connection & Server Start =====
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ MongoDB connected');
     const PORT = process.env.PORT || 5002;

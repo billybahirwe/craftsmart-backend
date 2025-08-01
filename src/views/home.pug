@@ -1,4 +1,4 @@
-doctype html
+doctype html  
 html
   head
     meta(charset='UTF-8')
@@ -10,11 +10,11 @@ html
   body
     // Navigation
     nav.bg-white.shadow.p-4.flex.justify-between.items-center
-      .text-2xl.font-bold.text-blue-600 CraftSmart
+      a.text-2xl.font-bold.text-blue-600(href='/') CraftSmart
       div(class='space-x-6 hidden md:flex')
         a(href='/' class='hover:text-blue-500') Home
         a(href='#how-it-works' class='hover:text-blue-500') How It Works
-        a(href='#blacklist' class='hover:text-blue-500') Blacklist
+        a(href='#blacklist' class='hover:text-blue-500') Public Blacklist
         a(href='#contact' class='hover:text-blue-500') Contact
         a(href='/admin-login' class='hover:text-blue-500 font-semibold') Admin Login
       div(class='space-x-2')
@@ -43,7 +43,8 @@ html
 
     // Blacklist Section
     section#blacklist.bg-white.py-16.px-6
-      h2.text-3xl.font-semibold.text-center.text-red-600.mb-8 Public Blacklist
+      h2.text-3xl.font-semibold.text-center.mb-8
+        a(href='/public-blacklist' class='text-red-600 hover:underline') Public Blacklist
       p.text-center.text-gray-700.max-w-2xl.mx-auto
         | To promote trust and safety, CraftSmart maintains a visible blacklist of users reported and verified for misconduct or fraud.
 

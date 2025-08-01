@@ -7,58 +7,61 @@ html(lang="en")
     link(rel='stylesheet', href='/css/user-register.css')
     script(src='https://cdn.tailwindcss.com')
 
-  body
-    .register-container
-      h2 Register
+  body(class='bg-gray-100 min-h-screen flex items-center justify-center')
+    .register-container(class='bg-white p-8 rounded shadow-md w-full max-w-lg')
+      h2(class='text-2xl font-bold mb-6 text-center text-blue-600') Register
 
       form(action='/register', method='POST')
         .mb-4
-          label(for='username') Username
-          input#username(type='text', name='username', required, placeholder='Enter your username')
+          label(for='username' class='block mb-1 font-semibold') Username
+          input#username(type='text', name='username', required, placeholder='Enter your username' class='w-full border px-3 py-2 rounded')
 
         .mb-4
-          label(for='email') Email (optional)
-          input#email(type='email', name='email', placeholder='Enter your email')
+          label(for='email' class='block mb-1 font-semibold') Email (optional)
+          input#email(type='email', name='email', placeholder='Enter your email' class='w-full border px-3 py-2 rounded')
 
         .mb-4
-          label(for='password') Password
-          input#password(type='password', name='password', required, placeholder='Enter your password')
+          label(for='password' class='block mb-1 font-semibold') Password
+          input#password(type='password', name='password', required, placeholder='Enter your password' class='w-full border px-3 py-2 rounded')
 
         .mb-4
-          label(for='role') Register as:
-          select#role(name='role', required)
+          label(for='role' class='block mb-1 font-semibold') Register as:
+          select#role(name='role', required class='w-full border px-3 py-2 rounded')
             option(value='') Select a role
             option(value='employer') Employer
             option(value='craftsman') Craftsman
 
         .mb-4
-          label(for='mobileNumber') Mobile Number
-          input#mobileNumber(type='text', name='mobileNumber', required, placeholder='e.g. +256712345678')
+          label(for='mobileNumber' class='block mb-1 font-semibold') Mobile Number
+          input#mobileNumber(type='text', name='mobileNumber', required, placeholder='e.g. +256712345678' class='w-full border px-3 py-2 rounded')
 
         .mb-4
-          label Location (Region, District, Sub-county)
-          select#region.mb-2(name='region', required, onchange='populateDistricts()')
+          label(class='block mb-1 font-semibold') Location (Region, District, Sub-county)
+          select#region.mb-2(name='region', required onchange='populateDistricts()' class='w-full border px-3 py-2 rounded')
             option(value='') Select Region
             option(value='Central') Central
             option(value='Eastern') Eastern
             option(value='Northern') Northern
             option(value='Western') Western
 
-          select#district.mb-2(name='district', required, onchange='populateCities()')
+          select#district.mb-2(name='district', required onchange='populateCities()' class='w-full border px-3 py-2 rounded')
             option(value='') Select District
 
-          select#city(name='city', required)
+          select#city(name='city', required class='w-full border px-3 py-2 rounded')
             option(value='') Select Sub-county / City
 
         .mb-4
-          label(for='skills') Skills (comma-separated)
-          input#skills(type='text', name='skills', placeholder='e.g. plumbing, carpentry')
+          label(for='skills' class='block mb-1 font-semibold') Skills (comma-separated)
+          input#skills(type='text', name='skills', placeholder='e.g. plumbing, carpentry' class='w-full border px-3 py-2 rounded')
 
         .mb-4
-          label(for='bio') Bio
-          textarea#bio(name='bio', rows='3', placeholder='Tell us a bit about yourself...')
+          label(for='bio' class='block mb-1 font-semibold') Bio
+          textarea#bio(name='bio', rows='3', placeholder='Tell us a bit about yourself...' class='w-full border px-3 py-2 rounded')
 
-        button(type='submit') Register
+        button(type='submit' class='w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition') Register
+
+      .mt-6.text-center
+        a(href='/' class='text-blue-600 hover:underline') ← Back to Home
 
     script.
       const districts = {
