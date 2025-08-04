@@ -9,27 +9,45 @@ html
 
   body
     // Navigation
-    nav.bg-white.shadow.p-4.flex.justify-between.items-center
-      a.text-2xl.font-bold.text-blue-600(href='/') CraftSmart
-      div(class='space-x-6 hidden md:flex')
-        a(href='/' class='hover:text-blue-500') Home
-        a(href='#how-it-works' class='hover:text-blue-500') How It Works
-        a(href='#blacklist' class='hover:text-blue-500') Public Blacklist
-        a(href='#contact' class='hover:text-blue-500') Contact
-        a(href='/admin-login' class='hover:text-blue-500 font-semibold') Admin Login
-      div(class='space-x-2')
-        a(href='/login' class='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600') Login
-        a(href='/register' class='border border-blue-500 text-blue-500 px-4 py-2 rounded hover:bg-blue-50') Register
+    nav(class='bg-white shadow p-4')
+      .nav-container(class='flex justify-between items-center max-w-6xl mx-auto')
+        a(href='/' class='text-2xl font-bold text-blue-600') CraftSmart
 
-    // Hero Section with background image
+        // Desktop links
+        ul(class='hidden md:flex space-x-6')
+          li: a(href='/' class='hover:text-blue-500') Home
+          li: a(href='#how-it-works' class='hover:text-blue-500') How It Works
+          li: a(href='#blacklist' class='hover:text-blue-500') Public Blacklist
+          li: a(href='#contact' class='hover:text-blue-500') Contact
+          li: a(href='/admin-login' class='hover:text-blue-500 font-semibold') Admin Login
+
+        // Desktop buttons
+        div(class='hidden md:flex space-x-2')
+          a(href='/login' class='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600') Login
+          a(href='/register' class='border border-blue-500 text-blue-500 px-4 py-2 rounded hover:bg-blue-50') Register
+
+        // Hamburger button for mobile
+        button#hamburger(type='button' class='block md:hidden text-3xl text-blue-600') &#9776;
+
+      // Mobile dropdown menu
+      ul#mobile-menu(class='hidden flex-col bg-white shadow rounded p-4 space-y-2 mt-2 md:hidden mx-4')
+        li: a(href='/' class='block text-gray-700 hover:text-blue-500') Home
+        li: a(href='#how-it-works' class='block text-gray-700 hover:text-blue-500') How It Works
+        li: a(href='#blacklist' class='block text-gray-700 hover:text-blue-500') Public Blacklist
+        li: a(href='#contact' class='block text-gray-700 hover:text-blue-500') Contact
+        li: a(href='/admin-login' class='block text-gray-700 hover:text-blue-500 font-semibold') Admin Login
+        li: a(href='/login' class='block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600') Login
+        li: a(href='/register' class='block border border-blue-500 text-blue-500 px-4 py-2 rounded hover:bg-blue-50') Register
+
+    // Hero Section
     section(class='hero text-center py-32')
       h1(class='text-4xl md:text-5xl font-bold text-white mb-6') Outsource Craftsmen Confidently
       p(class='text-white max-w-xl mx-auto text-lg')
         | CraftSmart connects employers with verified, rated craftsmen for construction and renovation jobs. Secure. Transparent. Efficient.
 
     // How It Works
-    section#how-it-works.py-16.px-6.bg-gray-50
-      h2.text-3xl.font-semibold.text-center.text-blue-600.mb-10 How It Works
+    section#how-it-works(class='py-16 px-6 bg-gray-50')
+      h2(class='text-3xl font-semibold text-center text-blue-600 mb-10') How It Works
       div(class='grid grid-cols-1 gap-6 max-w-6xl mx-auto md:grid-cols-3')
         .bg-white.p-6.rounded.shadow
           h3.font-bold.text-lg.mb-2 1. Register
@@ -38,23 +56,31 @@ html
           h3.font-bold.text-lg.mb-2 2. Post or Browse Jobs
           p Employers post jobs. Craftsmen apply and accept offers.
         .bg-white.p-6.rounded.shadow
-          h3.font-bold.text-lg.mb-2 3. Rate &amp; Review
+          h3.font-bold.text-lg.mb-2 3. Rate & Review
           p After project completion, leave ratings and build trust.
 
     // Blacklist Section
-    section#blacklist.bg-white.py-16.px-6
-      h2.text-3xl.font-semibold.text-center.mb-8
+    section#blacklist(class='bg-white py-16 px-6')
+      h2(class='text-3xl font-semibold text-center mb-8')
         a(href='/public-blacklist' class='text-red-600 hover:underline') Public Blacklist
-      p.text-center.text-gray-700.max-w-2xl.mx-auto
+      p(class='text-center text-gray-700 max-w-2xl mx-auto')
         | To promote trust and safety, CraftSmart maintains a visible blacklist of users reported and verified for misconduct or fraud.
 
     // Contact Section
-    section#contact.bg-blue-600.text-white.py-16.px-6
-      h2.text-3xl.font-semibold.text-center.mb-6 Contact Us
-      p.text-center.max-w-xl.mx-auto
+    section#contact(class='bg-blue-600 text-white py-16 px-6')
+      h2(class='text-3xl font-semibold text-center mb-6') Contact Us
+      p(class='text-center max-w-xl mx-auto')
         | Have questions or need help? Email us at 
-        a.underline(href='mailto:support@craftsmart.com') support@craftsmart.com
+        a(href='mailto:support@craftsmart.com' class='underline') support@craftsmart.com
 
     // Footer
-    footer.text-center.py-4.bg-gray-200.text-sm.text-gray-600
+    footer(class='text-center py-4 bg-gray-200 text-sm text-gray-600')
       | © 2025 CraftSmart. All rights reserved.
+
+    // JS Script for mobile dropdown
+    script.
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });

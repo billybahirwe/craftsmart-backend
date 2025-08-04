@@ -36,7 +36,7 @@ html(lang="en")
           input#mobileNumber(type='text', name='mobileNumber', required, placeholder='e.g. +256712345678' class='w-full border px-3 py-2 rounded')
 
         .mb-4
-          label(class='block mb-1 font-semibold') Location (Region, District, Sub-county)
+          label(class='block mb-1 font-semibold') Location (Region, District, City/Neighborhood)
           select#region.mb-2(name='region', required onchange='populateDistricts()' class='w-full border px-3 py-2 rounded')
             option(value='') Select Region
             option(value='Central') Central
@@ -48,7 +48,7 @@ html(lang="en")
             option(value='') Select District
 
           select#city(name='city', required class='w-full border px-3 py-2 rounded')
-            option(value='') Select Sub-county / City
+            option(value='') Select City / Neighborhood
 
         .mb-4
           label(for='skills' class='block mb-1 font-semibold') Skills (comma-separated)
@@ -56,7 +56,18 @@ html(lang="en")
 
         .mb-4
           label(for='bio' class='block mb-1 font-semibold') Bio
-          textarea#bio(name='bio', rows='3', placeholder='Tell us a bit about yourself...' class='w-full border px-3 py-2 rounded')
+          textarea#bio(name='bio', rows='7', class='w-full border px-3 py-2 rounded') 
+            | Born: _______________
+            | 
+            | Gender: _______________
+            | 
+            | Languages: _______________
+            | 
+            | Years of Experience: _______________
+            | 
+            | About me: I am a highly skilled _______________ with over __ years of hands-on experience. 
+            | I have worked on various projects including _______________. I take pride in delivering 
+            | quality work and maintaining good communication with clients.
 
         button(type='submit' class='w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition') Register
 
@@ -66,13 +77,18 @@ html(lang="en")
     script.
       const districts = {
         Central: {
-          Kampala: ["Rubaga", "Nakawa", "Makindye"],
-          Wakiso: ["Entebbe", "Kira", "Nansana"],
+          Kampala: [
+            "Muyenga", "Lweza", "Kabalagala", "Munyonyo", "Ntinda", "Naguru", "Buziga", 
+            "Bugolobi", "Makindye", "Kololo", "Kansanga", "Kyambogo", "Rubaga", 
+            "Nakawa", "Bukoto", "Kamwokya", "Nsambya", "Bweyogerere", "Namugongo", 
+            "Kasubi", "Mutungo", "Kireka", "Mengo", "Kikoni"
+          ],
+          Wakiso: ["Entebbe", "Kira", "Nansana", "Kasangati", "Gayaza", "Bulenga"],
           Mukono: ["Mukono Town", "Seeta", "Namilyango"]
         },
         Eastern: {
-          Jinja: ["Bugembe", "Mpumudde"],
-          Mbale: ["Industrial", "Wanale"],
+          Jinja: ["Bugembe", "Mpumudde", "Wanyange"],
+          Mbale: ["Industrial", "Wanale", "Namakwekwe"],
           Tororo: ["Malaba", "Mukuju"]
         },
         Northern: {
@@ -92,7 +108,7 @@ html(lang="en")
         const districtSelect = document.getElementById("district");
         const citySelect = document.getElementById("city");
         districtSelect.innerHTML = '<option value="">Select District</option>';
-        citySelect.innerHTML = '<option value="">Select Sub-county / City</option>';
+        citySelect.innerHTML = '<option value="">Select City / Neighborhood</option>';
         if (region && districts[region]) {
           Object.keys(districts[region]).forEach(district => {
             const option = document.createElement("option");
@@ -107,7 +123,7 @@ html(lang="en")
         const region = document.getElementById("region").value;
         const district = document.getElementById("district").value;
         const citySelect = document.getElementById("city");
-        citySelect.innerHTML = '<option value="">Select Sub-county / City</option>';
+        citySelect.innerHTML = '<option value="">Select City / Neighborhood</option>';
         if (region && district && districts[region][district]) {
           districts[region][district].forEach(city => {
             const option = document.createElement("option");

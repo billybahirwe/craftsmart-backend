@@ -15,39 +15,107 @@ nav {
   padding: 1rem;
 }
 
-nav .text-blue-600 {
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: bold;
   color: #777E9C;
 }
 
-nav a {
+/* Shared Nav Styles */
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  display: inline-block;
+  margin-left: 1.5rem;
+}
+
+.nav-links a {
   color: #7E7E7E;
+  text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
-  text-decoration: none;
 }
 
-nav a:hover {
-  color: #777E9C;
-}
-
-nav .bg-blue-500 {
-  background-color: #777E9C;
-}
-
-nav .hover\:bg-blue-600:hover {
-  background-color: #5A5F78;
-}
-
-nav .border-blue-500 {
-  border-color: #777E9C;
-}
-
-nav .text-blue-500 {
-  color: #777E9C;
-}
-
-nav .hover\:text-blue-500:hover {
+.nav-links a:hover {
   color: #5A5F78;
+}
+
+/* Desktop Nav */
+.nav-links.desktop {
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile Hamburger */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #777E9C;
+  cursor: pointer;
+}
+
+/* Mobile Nav Dropdown */
+.nav-links.mobile {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 0 0 0.5rem 0.5rem;
+  width: 200px;
+  text-align: right;
+  z-index: 1000;
+}
+
+.nav-links.mobile li {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-links.mobile li:last-child {
+  border-bottom: none;
+}
+
+/* Mobile Nav Hover */
+.nav-links.mobile a:hover {
+  color: #5A5F78;
+}
+
+/* Show Mobile Nav */
+.nav-links.mobile.show {
+  display: block;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .nav-links.desktop {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-container {
+    flex-wrap: wrap;
+  }
 }
 
 /* HERO SECTION WITH BACKGROUND IMAGE */
@@ -139,7 +207,7 @@ section h2 {
 /* BUTTON STYLES */
 a.button,
 button {
-  background-color: #777E9C;
+  background-color: #777E9C; /* Login */
   color: #fff;
   padding: 0.6rem 1.2rem;
   border-radius: 0.375rem;
@@ -159,7 +227,7 @@ button:hover {
 a.button.outline,
 button.outline {
   background-color: transparent;
-  color: #777E9C;
+  color: #777E9C; /* Register outline */
   border: 1px solid #777E9C;
 }
 
