@@ -1,17 +1,13 @@
 const express = require('express');
-const dotenv = require('dotenv');
 const cors = require('cors');
 const http = require('http');
 const { Server } = require('socket.io');
 const path = require('path');
 const session = require('express-session');
 
-// Load environment variables
-dotenv.config();
-
 // MongoDB connection
-const connectDB = require('./config/db'); // Assuming db.js is in 'config/' folder
-connectDB(); // Call it once on startup
+const connectDB = require('./config/db');
+connectDB(); // Connect to MongoDB
 
 // Initialize express app and HTTP server
 const app = express();
@@ -52,12 +48,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ===== Session Setup =====
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || 'craftsmart_secret_key',
+    secret: 'craftsmart_secret_key',
     resave: false,
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: false,
       sameSite: 'lax',
     },
   })
@@ -129,7 +125,7 @@ app.get('/public-blacklist', (req, res) => {
   res.render('public-blacklist');
 });
 
-// ===== Error Handling (Always Last) =====
+// ===== Error Handling =====
 app.use(notFound);
 app.use(errorHandler);
 
@@ -147,7 +143,7 @@ io.on('connection', (socket) => {
 });
 
 // ===== Start Server =====
-const PORT = process.env.PORT || 5002;
+const PORT = 5003;
 server.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });

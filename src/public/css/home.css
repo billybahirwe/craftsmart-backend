@@ -27,7 +27,7 @@ nav {
 .brand {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #777E9C;
+  color: #444A6D; /* Updated brand color */
 }
 
 /* Shared Nav Styles */
@@ -65,7 +65,7 @@ nav {
   font-size: 1.8rem;
   background: none;
   border: none;
-  color: #777E9C;
+  color: #444A6D;
   cursor: pointer;
 }
 
@@ -73,11 +73,11 @@ nav {
 .nav-links.mobile {
   display: none;
   position: absolute;
-  right: 0;
+  right: 1rem;
   top: 100%;
   background: white;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  border-radius: 0 0 0.5rem 0.5rem;
+  border-radius: 0.5rem;
   width: 200px;
   text-align: right;
   z-index: 1000;
@@ -93,12 +93,10 @@ nav {
   border-bottom: none;
 }
 
-/* Mobile Nav Hover */
 .nav-links.mobile a:hover {
   color: #5A5F78;
 }
 
-/* Show Mobile Nav */
 .nav-links.mobile.show {
   display: block;
 }
@@ -207,7 +205,7 @@ section h2 {
 /* BUTTON STYLES */
 a.button,
 button {
-  background-color: #777E9C; /* Login */
+  background-color: #444A6D; /* Unified button color */
   color: #fff;
   padding: 0.6rem 1.2rem;
   border-radius: 0.375rem;
@@ -221,14 +219,14 @@ button {
 
 a.button:hover,
 button:hover {
-  background-color: #5A5F78;
+  background-color: #363B56;
 }
 
 a.button.outline,
 button.outline {
   background-color: transparent;
-  color: #777E9C; /* Register outline */
-  border: 1px solid #777E9C;
+  color: #444A6D;
+  border: 1px solid #444A6D;
 }
 
 a.button.outline:hover,
@@ -247,7 +245,7 @@ section.white {
 
 /* CONTACT SECTION */
 #contact {
-  background-color: #777E9C;
+  background-color: #444A6D;
   color: #ffffff;
   padding: 3rem 1rem;
   text-align: center;
