@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const http = require('http');
@@ -9,6 +8,23 @@ const session = require('express-session');
 
 // Load environment variables
 dotenv.config();
+
+// MongoDB connection
+const connectDB = require('./config/db'); // Assuming db.js is in 'config/' folder
+connectDB(); // Call it once on startup
+
+// Initialize express app and HTTP server
+const app = express();
+const server = http.createServer(app);
+
+// Initialize Socket.IO
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  },
+});
 
 // Import Models
 const User = require('./models/user');
@@ -27,25 +43,10 @@ const dashboardRoutes = require('./routes/dashboard.routes');
 // Import middleware
 const { notFound, errorHandler } = require('./middlewares/error.middleware');
 
-// Initialize express app and HTTP server
-const app = express();
-const server = http.createServer(app);
-
-// Initialize Socket.IO
-const io = new Server(server, {
-  cors: {
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-  },
-});
-
 // ===== Middleware Setup =====
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ===== Session Setup =====
@@ -54,7 +55,11 @@ app.use(
     secret: process.env.SESSION_SECRET || 'craftsmart_secret_key',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false }, // Set to true in production (HTTPS)
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+    },
   })
 );
 
@@ -64,8 +69,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 // ===== Admin Login/Logout Routes =====
 app.use('/', adminRoutes);
-
-// ✅ Use the dashboard route
 app.use('/dashboard', dashboardRoutes);
 
 // ===== API Routes =====
@@ -77,25 +80,17 @@ app.use('/api/message', messageRoutes);
 app.use('/api/craftsmen', craftsmanRoutes);
 app.use('/', authRoutes);
 
-// ===== Registration Form Route (GET) =====
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next();
-});
-
+// ===== Form Route =====
 app.get('/register', (req, res) => {
   res.render('user-register', { title: 'User Registration' });
 });
 
-// ===== Registration Handling Route (POST) =====
 app.post('/register', async (req, res) => {
   try {
-    // Remove empty email field so it doesn't trigger Mongoose validator
     if (!req.body.email || req.body.email.trim() === '') {
       delete req.body.email;
     }
 
-    // Convert skills to array
     if (typeof req.body.skills === 'string') {
       req.body.skills = req.body.skills
         .split(',')
@@ -103,19 +98,15 @@ app.post('/register', async (req, res) => {
         .filter(Boolean);
     }
 
-    // Combine location
     const { region, district, city, ...rest } = req.body;
     const location = { region, district, city };
 
-    const userData = {
-      ...rest,
-      location,
-    };
+    const userData = { ...rest, location };
 
     const newUser = new User(userData);
     await newUser.save();
 
-    res.redirect('/login'); // Or wherever you want to go after registration
+    res.redirect('/login');
   } catch (err) {
     console.error('Registration Error:', err.message);
     res.status(400).render('user-register', {
@@ -125,7 +116,7 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// ===== Custom Routes for Dashboards =====
+// ===== Dashboards =====
 app.get('/employer', (req, res) => {
   res.render('employer-dashboard', { title: 'Employer Dashboard' });
 });
@@ -138,8 +129,7 @@ app.get('/public-blacklist', (req, res) => {
   res.render('public-blacklist');
 });
 
-
-// ===== Error Handling (MUST be last) =====
+// ===== Error Handling (Always Last) =====
 app.use(notFound);
 app.use(errorHandler);
 
@@ -156,17 +146,8 @@ io.on('connection', (socket) => {
   });
 });
 
-// ===== MongoDB Connection & Server Start =====
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log('✅ MongoDB connected');
-    const PORT = process.env.PORT || 5002;
-    server.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error('❌ MongoDB connection failed:', err.message);
-    process.exit(1);
-  });
+// ===== Start Server =====
+const PORT = process.env.PORT || 5002;
+server.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
